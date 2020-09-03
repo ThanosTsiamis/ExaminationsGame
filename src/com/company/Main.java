@@ -28,10 +28,10 @@ public class Main {
             //supervisor assumes a position in the room in the first row
             //The position is random in the first row.
             Random random = new Random();
-            int low = 0;
-            int high = 14;
-            int result = random.nextInt(high-low) + low;
-            supervisor.move(0,result);
+            int lowestBound = 0;
+            int highestBound = 14;
+            int result = random.nextInt(highestBound - lowestBound) + lowestBound;
+            supervisor.move(0, result);
         }
         Game game = new Game();
         //Game starts

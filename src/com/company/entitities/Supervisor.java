@@ -7,6 +7,10 @@ public class Supervisor {
     int col;
     double awareness;
 
+    public double getAwareness() {
+        return awareness;
+    }
+
     public Supervisor() {
         this.awareness = professorsAttitudeEnum.ordinal() * 0.23 + 1;
     }
@@ -15,5 +19,12 @@ public class Supervisor {
         this.row = row;
         this.col = col;
     }
+
+    public void pathTaken(){
+        // we could use a stack to pop elements and set the path
+    }
+
+
+
 
 }
