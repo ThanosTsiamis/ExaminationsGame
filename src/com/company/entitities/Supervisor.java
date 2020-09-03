@@ -1,9 +1,11 @@
 package com.company.entitities;
 
+import static com.company.Main.professorsAttitudeEnum;
+
 public class Supervisor {
     int row;
     int col;
-    int awareness;
+    double awareness;
 
     public void setRow(int row) {
         this.row = row;
@@ -14,8 +16,7 @@ public class Supervisor {
     }
 
     public Supervisor() {
-        //TODO add supervisor awareness according to Professors Attitude
-
+        this.awareness = professorsAttitudeEnum.ordinal()*0.23+1;
     }
 
 }

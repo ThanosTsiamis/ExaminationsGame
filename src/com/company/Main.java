@@ -9,7 +9,7 @@ import com.company.enums.ProfessorsAttitude;
 
 public class Main {
     public static Enum<CourseDifficulty> courseDifficulty = CourseDifficulty.MEDIUM;
-    Enum<ProfessorsAttitude> professorsAttitudeEnum = ProfessorsAttitude.RELAXED;
+    public static Enum<ProfessorsAttitude> professorsAttitudeEnum = ProfessorsAttitude.RELAXED;
 
     public static void main(String[] args) {
         //populate the Room
