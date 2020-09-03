@@ -31,14 +31,16 @@ public class Student {
     }
 
     public void cheat() {
+        if (isCheating()){
+            setCheating(false);
+        }
         if (isMalicious() && !isCheating()) {
             setCheating(true);
         }
     }
-
     public void attractAttention() {
         if (!malicious) {
-            //TODO change it according to the course's difficulty
+            //TODO change it according to the course's difficulty.This means more difficult courses attract more attention.
             if (Math.random() < 0.1) {
                 //set the path of a supervisor to a student
             }
