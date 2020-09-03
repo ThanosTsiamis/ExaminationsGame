@@ -13,8 +13,9 @@ public class Supervisor {
         this.col = col;
     }
 
-    public Supervisor(int awareness) {
-        this.awareness = awareness;
+    public Supervisor() {
+        //TODO add supervisor awareness according to Professors Attitude
+
     }
 
 }

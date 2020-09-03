@@ -1,5 +1,5 @@
 package com.company.enums;
 
 public enum CourseDifficulty {
-    EASY, RELATIVELY_EASY, MEDIUM, RELATIVELY_HARD, HARD
+    HARD,RELATIVELY_HARD,MEDIUM,RELATIVELY_EASY,EASY
 }
