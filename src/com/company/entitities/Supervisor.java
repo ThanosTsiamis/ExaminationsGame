@@ -7,16 +7,13 @@ public class Supervisor {
     int col;
     double awareness;
 
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setCol(int col) {
-        this.col = col;
-    }
-
     public Supervisor() {
-        this.awareness = professorsAttitudeEnum.ordinal()*0.23+1;
+        this.awareness = professorsAttitudeEnum.ordinal() * 0.23 + 1;
+    }
+
+    public void moveSupervisor(int row, int col) {
+        this.row = row;
+        this.col = col;
     }
 
 }
