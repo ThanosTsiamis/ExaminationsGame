@@ -11,7 +11,7 @@ public class Supervisor {
         this.awareness = professorsAttitudeEnum.ordinal() * 0.23 + 1;
     }
 
-    public void moveSupervisor(int row, int col) {
+    public void move(int row, int col) {
         this.row = row;
         this.col = col;
     }
