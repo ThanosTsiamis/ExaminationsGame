@@ -46,17 +46,7 @@ public class Student {
     }
 
     private double maliciousThreshold() {
-        if (EASY.equals(courseDifficulty)) {
-            return 0.095;
-        } else if (RELATIVELY_EASY.equals(courseDifficulty)) {
-            return 0.05;
-        } else if (MEDIUM.equals(courseDifficulty)) {
-            return 0.025;
-        } else if (RELATIVELY_HARD.equals(courseDifficulty)) {
-            return 0.02;
-        } else {
-            return 0.01;
-        }
+        return courseDifficulty.ordinal()*0.235 +0.01;
     }
 }
 
