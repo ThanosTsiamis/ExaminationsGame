@@ -8,7 +8,7 @@ public class Supervisor {
     int row;
     int col;
     double awareness;
-
+    //TODO round awareness to an integer to represent the vision of the Supervisors
     public double getAwareness() {
         return awareness;
     }

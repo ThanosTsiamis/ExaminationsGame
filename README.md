@@ -23,4 +23,4 @@ and will not cheat again.
 In the end the algorithm keeps a record of the cheaters' position and marks them accordingly if they won or not.
 
 
-We will run each game approximately k times (k TBD) to see whether some statistically results apply.
+We will run each game approximately n times (n TBD) to see whether some statistically results apply.
