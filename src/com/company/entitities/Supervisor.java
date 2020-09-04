@@ -2,6 +2,8 @@ package com.company.entitities;
 
 import static com.company.Main.professorsAttitudeEnum;
 
+import java.util.Random;
+
 public class Supervisor {
     int row;
     int col;
@@ -22,6 +24,13 @@ public class Supervisor {
 
     public void pathTaken(){
         // we could use a stack to pop elements and set the path
+    }
+    public void assumePosition(){
+        Random random = new Random();
+        int lowestBound = 0;
+        int highestBound = 14;
+        int result = random.nextInt(highestBound - lowestBound) + lowestBound;
+        move(0, result);
     }
 
 

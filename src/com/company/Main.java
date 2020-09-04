@@ -3,6 +3,7 @@ package com.company;
 import java.util.Random;
 
 import com.company.entitities.Column;
+import com.company.entitities.Professor;
 import com.company.entitities.Student;
 import com.company.entitities.Supervisor;
 import com.company.entitities.Walkway;
@@ -27,12 +28,10 @@ public class Main {
             Supervisor supervisor = new Supervisor();
             //supervisor assumes a position in the room in the first row
             //The position is random in the first row.
-            Random random = new Random();
-            int lowestBound = 0;
-            int highestBound = 14;
-            int result = random.nextInt(highestBound - lowestBound) + lowestBound;
-            supervisor.move(0, result);
+            supervisor.assumePosition();
         }
+        //The professor sits at his desk (pos.x and y) and has a deeper vision than the others
+        Professor professor = new Professor();
         Game game = new Game();
         //Game starts
         for (int ticks = 0; ticks < 380; ticks++) { //Each tick is a round
@@ -57,5 +56,4 @@ public class Main {
             }
         }
     }
-
 }
