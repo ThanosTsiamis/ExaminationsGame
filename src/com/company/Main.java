@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Random;
-
 import com.company.entitities.Column;
 import com.company.entitities.Professor;
 import com.company.entitities.Student;
@@ -30,7 +28,6 @@ public class Main {
             //The position is random in the first row.
             supervisor.assumePosition();
         }
-        //The professor sits at his desk (pos.x and y) and has a deeper vision than the others
         Professor professor = new Professor();
         Game game = new Game();
         //Game starts
@@ -48,7 +45,7 @@ public class Main {
                 if (col % 2 == 0 && row != 0) {
                     room[row][col] = new Student();
                 } else {
-                    room[row][col] = new Walkway();
+                    room[row][col] = new Walkway(row, col);
                 }
                 //we put 6 columns in the space
                 room[20][4] = new Column();
