@@ -26,7 +26,7 @@ public class Main {
         //the supervisors come to the room
         int numberOfSupervisors = courseDifficulty.ordinal() + 1;
         ArrayList<Supervisor> listOfSupervisors = new ArrayList<>();
-        for (int number = 0; number < numberOfSupervisors; number++) {
+        for (int counter = 0; counter < numberOfSupervisors; counter++) {
             Supervisor supervisor = new Supervisor();
             listOfSupervisors.add(supervisor);
             //supervisor assumes a position in the room in the first row
@@ -39,7 +39,7 @@ public class Main {
         Game game = new Game();
 
         //Game starts
-        for (int ticks = 0; ticks < 380; ticks++) { //Each tick is a round
+        while (game.isOn()){
             //play the game
             game.playRound();
             //if cheater caught then break;
@@ -48,6 +48,8 @@ public class Main {
         //game ends here
         game.endOfGame();
         //store the results in a csv file with two tabs
+        //after storage revert to original state
+        game.revertResultsToOriginal();
 
     }
 
