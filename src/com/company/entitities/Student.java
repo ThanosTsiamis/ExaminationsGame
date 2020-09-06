@@ -3,6 +3,8 @@ package com.company.entitities;
 import static com.company.Main.courseDifficulty;
 
 public class Student {
+    final int row;
+    final int col;
     private final boolean malicious;
     private boolean cheating;
 
@@ -18,7 +20,9 @@ public class Student {
         this.cheating = cheating;
     }
 
-    public Student() {
+    public Student(int row, int col) {
+        this.row = row;
+        this.col = col;
         if (Math.random() < maliciousThreshold()) {
             malicious = true;
         } else {
