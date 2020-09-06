@@ -46,15 +46,14 @@ public class Game {
     }
 
     private void moveSupervisors() {
-
+        //call Supervisor.move(xx,yy) where xx and yy will be the path they will take
+        //The path implementation TBD
     }
 
     private void studentsCheat(int roundNumber) {
         //students will try to cheat as time progresses
         //it will call cheat
         for (Student student : listOfMaliciousStudents) {
-            //I need to implement it in such way that every (malicious) student will
-            //cheat with a random chance , and if so he will stop after 2 rounds or so.
             student.cheat(roundNumber);
         }
         //for every malicious Student stored in the list call Math.random in respect to roundNumber
@@ -67,17 +66,21 @@ public class Game {
         //within bounds of course
 
 
+
         //maybe return it as a list(?)
     }
 
     private void caughtCheck() {
         //based on visionCheck check if a student exists on this discrete circle who has isCheating == true
+        //this means that it takes the coordinates of the supervisor and calculates the discrete circle
+        //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
     }
 
     private void cheatSuccessfulCheck() {
-        //if caught check is false then the student is not caught for each Supervisor
+        //if caughtCheck is false then this means that the student is not caught and return true
+
     }
 
 }

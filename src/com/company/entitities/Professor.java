@@ -1,14 +1,16 @@
 package com.company.entitities;
 
-public class Professor extends Supervisor{
+public class Professor extends Supervisor {
+    int row;
+    int col;
 
     public Professor() {
-        //TODO add a dynamic way to set the middle point
-        move(0,5);
+        this.row = 0;
+        this.col = 5;
     }
 
     @Override
     public double getAwareness() {
-        return super.getAwareness()*1.75;
+        return super.getAwareness() * 1.75;
     }
 }

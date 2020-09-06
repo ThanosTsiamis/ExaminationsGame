@@ -56,6 +56,7 @@ public class Student {
         return courseDifficulty.ordinal() * 0.235 + 0.01;
     }
     private boolean cheatingChanceGenerator(int roundNumber){
+        //TODO implement this
         //if Math.random < some value then return true
         //else return false
         //should return a boolean based on the roundNumber
