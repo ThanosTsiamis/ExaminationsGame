@@ -17,6 +17,10 @@ public class Game {
         //Maybe playRound should return a boolean to end the game -->maliciousStudentCaught?
 
     }
+    public void endOfGame(){
+        //export cheaters positions to a list
+        //export caught results to a list
+    }
 
     private void moveSupervisors() {
 

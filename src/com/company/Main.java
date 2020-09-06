@@ -33,14 +33,20 @@ public class Main {
             //The position is random in the first row.
             supervisor.assumePosition();
         }
+
         Professor professor = new Professor();
+
         Game game = new Game();
+
         //Game starts
         for (int ticks = 0; ticks < 380; ticks++) { //Each tick is a round
             //play the game
+            game.playRound();
             //if cheater caught then break;
         }
+
         //game ends here
+        game.endOfGame();
         //store the results in a csv file with two tabs
 
     }
@@ -50,17 +56,16 @@ public class Main {
         for (int row = 0; row < room.length; row++) {
             for (int col = 0; col < room[row].length; col++) {
                 //populate with data
-
                 if (col % 2 == 0 && row != 0) {
-                    room[row][col] = new Student(row,col);
+                    room[row][col] = new Student(row, col);
                 } else {
-                    room[row][col] = new Walkway(row,col);
-                }
-                //we put 6 columns in the space
-                for (int temp = 0; temp < 6; temp++) {
-                    //   room[20][4] = new Column(20, 4);
+                    room[row][col] = new Walkway(row, col);
                 }
             }
+        }
+        //we put #numberOfColumns columns in the room
+        for (int counter = 0; counter < numberOfColumns; counter++) {
+            //   room[20][4] = new Column(20, 4);
         }
     }
 }
