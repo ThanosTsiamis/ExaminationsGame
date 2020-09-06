@@ -1,5 +1,9 @@
 package com.company.game;
 
+import static com.company.Main.listOfMaliciousStudents;
+
+import com.company.entitities.Student;
+
 public class Game {
     public static boolean maliciousStudentCaught;
     static int roundNumber;
@@ -47,15 +51,22 @@ public class Game {
 
     private void studentsCheat(int roundNumber) {
         //students will try to cheat as time progresses
-        //it will call cheat fy
+        //it will call cheat
+        for (Student student : listOfMaliciousStudents) {
+            //I need to implement it in such way that every (malicious) student will
+            //cheat with a random chance , and if so he will stop after 2 rounds or so.
+            student.cheat(roundNumber);
+        }
         //for every malicious Student stored in the list call Math.random in respect to roundNumber
-
     }
 
     private void visionCheck() {
         //fetch awareness from supervisors
         //fetch awareness from professor
         //based on the position calculate the circle that a supervisor can catch a student
+        //within bounds of course
+
+
         //maybe return it as a list(?)
     }
 

@@ -7,6 +7,7 @@ public class Student {
     final int col;
     private final boolean malicious;
     private boolean cheating;
+    private int roundsCheating = 0;
 
     public boolean isMalicious() {
         return malicious;
@@ -25,17 +26,19 @@ public class Student {
         this.col = col;
         if (Math.random() < maliciousThreshold()) {
             malicious = true;
-            //TODO store the malicious students objects in a list
         } else {
             malicious = false;
         }
     }
 
-    public void cheat() {
-        if (isCheating()) {
+    public void cheat(int roundNumber) {
+        if (isCheating() && roundsCheating > 2) {
             setCheating(false);
+        } else if (isCheating() && roundsCheating <= 2) {
+            roundsCheating += 1;
         }
-        if (isMalicious() && !isCheating()) {
+        if (isMalicious() && !isCheating() && cheatingChanceGenerator(roundNumber)) {
+            roundsCheating +=1;
             setCheating(true);
         }
     }
@@ -51,6 +54,13 @@ public class Student {
 
     private double maliciousThreshold() {
         return courseDifficulty.ordinal() * 0.235 + 0.01;
+    }
+    private boolean cheatingChanceGenerator(int roundNumber){
+        //if Math.random < some value then return true
+        //else return false
+        //should return a boolean based on the roundNumber
+        return  true;
+        //we have 380 rounds and
     }
 }
 
