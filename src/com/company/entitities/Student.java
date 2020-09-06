@@ -25,6 +25,7 @@ public class Student {
         this.col = col;
         if (Math.random() < maliciousThreshold()) {
             malicious = true;
+            //TODO store the malicious students objects in a list
         } else {
             malicious = false;
         }
