@@ -2,6 +2,9 @@ package com;
 
 import java.util.ArrayList;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import com.entitities.Column;
 import com.entitities.Supervisor;
 import com.entitities.Walkway;
@@ -51,6 +54,7 @@ public class Main {
         game.endOfGame();
 
         //store the results in a csv file with two tabs
+        createResults();
 
         //after storage revert to original state
         game.revertResultsToOriginal();
@@ -86,5 +90,9 @@ public class Main {
             //TODO find a different way to implement this
             numberOfColumns -= 1;
         }
+    }
+    private static void createResults(){
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Results");
     }
 }
