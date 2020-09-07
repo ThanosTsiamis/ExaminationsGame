@@ -52,6 +52,7 @@ public class Student {
             //TODO change it according to the course's difficulty.This means more difficult courses attract more attention.
             if (Math.random() < 0.1) {
                 //set the path of a supervisor to a student
+                //use dfs algorithm
             }
         }
     }
