@@ -1,18 +1,18 @@
 package com;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import com.entitities.Column;
+import com.entitities.Professor;
+import com.entitities.Student;
 import com.entitities.Supervisor;
 import com.entitities.Walkway;
 import com.enums.CourseDifficulty;
 import com.enums.ProfessorsAttitude;
 import com.game.Game;
-import com.entitities.Professor;
-import com.entitities.Student;
 
 public class Main {
     public static Enum<CourseDifficulty> courseDifficulty = CourseDifficulty.EASY;
@@ -79,21 +79,31 @@ public class Main {
             }
         }
         //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols
-        int row=10;
-        while (numberOfColumns != 0) {
-            int col=1;
-            room[row][col] = new Column(row,col);
-            col +=5;
-            room[row][col] = new Column(row,col);
-            row+=15;
-            //it creates index out of bounds
-            //TODO find a different way to implement this
-            numberOfColumns -= 1;
-        }
+        int row = 10;
+//        while (numberOfColumns != 0) {
+//            int col=1;
+//            room[row][col] = new Column(row,col);
+//            col +=5;
+//            room[row][col] = new Column(row,col);
+//            row+=15;
+//            //it creates index out of bounds
+//            //TODO find a different way to implement this. It produces index out of bounds
+//            numberOfColumns -= 1;
+//        }
     }
-    private static void createResults(){
-        //TODO check if it overwrites deleting the previous results
-        HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Results");
+
+    private static void createResults() {
+        //TODO check if it overwrites deleting the previous results - do it in a scratch file
+//        try {String filename = "Results.csv";
+//            HSSFWorkbook workbook = new HSSFWorkbook();
+//            HSSFSheet sheet = workbook.createSheet("Results");
+//            FileOutputStream fileOut = new FileOutputStream(filename);
+//            workbook.write(fileOut);
+//            fileOut.close();
+//            workbook.close();
+//            System.out.println("Your excel file has been generated!");
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }

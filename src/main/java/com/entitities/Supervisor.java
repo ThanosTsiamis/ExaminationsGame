@@ -24,6 +24,7 @@ public class Supervisor {
 
     public void pathTaken(){
         // we could use a stack to pop elements and set the path
+        //use dfs algorithm and see the results
     }
     public void assumePosition(){
         Random random = new Random();

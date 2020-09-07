@@ -34,10 +34,10 @@ public class Student {
 
     public void cheat(int roundNumber) {
         if (!hasCheatedSuccessfully) {
-            if (isCheating() && roundsCheating > 2) {
+            if (isCheating() && roundsCheating > 4) {
                 setCheating(false);
                 hasCheatedSuccessfully = true;
-            } else if (isCheating() && roundsCheating <= 2) {
+            } else if (isCheating() && roundsCheating <= 4) {
                 roundsCheating += 1;
             }
             if (isMalicious() && !isCheating() && cheatingChanceGenerator(roundNumber)) {
