@@ -1,6 +1,6 @@
-package com.java.entitities;
+package com.entitities;
 
-import static com.java.Main.professorsAttitudeEnum;
+import static com.Main.professorsAttitudeEnum;
 
 import java.util.Random;
 

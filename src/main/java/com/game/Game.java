@@ -1,8 +1,8 @@
-package com.java.game;
+package com.game;
 
-import static com.java.Main.listOfMaliciousStudents;
+import static com.Main.listOfMaliciousStudents;
 
-import com.java.entitities.Student;
+import com.entitities.Student;
 
 public class Game {
     public static boolean maliciousStudentCaught;

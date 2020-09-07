@@ -1,6 +1,6 @@
-package com.java.entitities;
+package com.entitities;
 
-import static com.java.Main.courseDifficulty;
+import com.Main;
 
 public class Student {
     final int row;
@@ -57,7 +57,7 @@ public class Student {
     }
 
     private double maliciousThreshold() {
-        return courseDifficulty.ordinal() * 0.235 + 0.01;
+        return Main.courseDifficulty.ordinal() * 0.235 + 0.01;
     }
 
     private boolean cheatingChanceGenerator(int roundNumber) {
