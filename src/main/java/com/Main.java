@@ -92,6 +92,7 @@ public class Main {
         }
     }
     private static void createResults(){
+        //TODO check if it overwrites deleting the previous results
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Results");
     }
