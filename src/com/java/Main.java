@@ -1,15 +1,15 @@
-package com.company;
+package com.java;
 
 import java.util.ArrayList;
 
-import com.company.entitities.Column;
-import com.company.entitities.Professor;
-import com.company.entitities.Student;
-import com.company.entitities.Supervisor;
-import com.company.entitities.Walkway;
-import com.company.enums.CourseDifficulty;
-import com.company.enums.ProfessorsAttitude;
-import com.company.game.Game;
+import com.java.entitities.Column;
+import com.java.entitities.Professor;
+import com.java.entitities.Student;
+import com.java.entitities.Supervisor;
+import com.java.entitities.Walkway;
+import com.java.enums.CourseDifficulty;
+import com.java.enums.ProfessorsAttitude;
+import com.java.game.Game;
 
 public class Main {
     public static Enum<CourseDifficulty> courseDifficulty = CourseDifficulty.EASY;

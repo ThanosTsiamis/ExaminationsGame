@@ -1,4 +1,4 @@
-package com.company.entitities;
+package com.java.entitities;
 
 public class Column {
     final int row;
