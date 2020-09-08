@@ -62,12 +62,18 @@ public class Student {
     }
 
     private boolean cheatingChanceGenerator(int roundNumber) {
-        //TODO implement this
-        //if Math.random < some value then return true
-        //else return false
-        //should return a boolean based on the roundNumber
-        return true;
-        //we have 380 rounds and
+        if (roundNumber <= 60) {
+            if (Math.random() < (0.01 / 12) * roundNumber) {
+                return true;
+            }
+        } else if (roundNumber < 356) {
+            if (Math.random() < (0.55 / 295) * roundNumber) {
+                return true;
+            }
+        } else {
+            return true;
+        }
+        return false;
     }
 }
 

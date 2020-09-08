@@ -17,7 +17,7 @@ public class Game {
     }
 
     public void playRound() {
-        //the order of these functions below is very important as it dictates a way of playing the game
+        //the order of these functions below is very important as it dictates the way of playing the game
         moveSupervisors();
         studentsCheat(roundNumber);
         visionCheck();
