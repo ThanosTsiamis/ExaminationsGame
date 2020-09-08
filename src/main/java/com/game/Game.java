@@ -65,21 +65,27 @@ public class Game {
         //based on the position calculate the circle that a supervisor can catch a student
         //within bounds of course
 
-
-
         //maybe return it as a list(?)
     }
 
-    private void caughtCheck() {
+    private boolean caughtCheck() {
         //based on visionCheck check if a student exists on this discrete circle who has isCheating == true
         //this means that it takes the coordinates of the supervisor and calculates the discrete circle
         //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
+        return false;
     }
 
-    private void cheatSuccessfulCheck() {
+    private boolean cheatSuccessfulCheck() {
         //if caughtCheck is false then this means that the student is not caught and return true
+        if (!caughtCheck()) {
+            return true;
+            //cheaters win (for this round)
+        } else {
+            //game over good bye
+            return false;
+        }
 
     }
 
