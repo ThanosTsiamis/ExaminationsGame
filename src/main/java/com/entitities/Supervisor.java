@@ -9,13 +9,21 @@ public class Supervisor {
     int col;
     double awareness;
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
     //TODO round awareness to an integer to represent the vision of the Supervisors
     public double getAwareness() {
         return awareness;
     }
 
     public Supervisor() {
-        this.awareness = professorsAttitudeEnum.ordinal() * 0.23 + 1;
+        this.awareness = professorsAttitudeEnum.ordinal() * 0.75 + 1;
     }
 
     public void move(int row, int col) {
