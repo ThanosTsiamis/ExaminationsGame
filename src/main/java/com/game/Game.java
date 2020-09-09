@@ -1,8 +1,10 @@
 package com.game;
 
 import static com.Main.listOfMaliciousStudents;
+import static com.Main.listOfSupervisors;
 
 import com.entitities.Student;
+import com.entitities.Supervisor;
 
 public class Game {
     public static boolean maliciousStudentCaught;
@@ -51,20 +53,20 @@ public class Game {
     }
 
     private void studentsCheat(int roundNumber) {
-        //students will try to cheat as time progresses
-        //it will call cheat
         for (Student student : listOfMaliciousStudents) {
             student.cheat(roundNumber);
         }
-        //for every malicious Student stored in the list call Math.random in respect to roundNumber
     }
 
     private void visionCheck() {
-        //fetch awareness from supervisors
-        //fetch awareness from professor
+        //fetch awareness from supervisors--DONE by traversing the list
+        //fetch awareness from professor--DONE by traversing the list
         //based on the position calculate the circle that a supervisor can catch a student
         //within bounds of course
-
+        for (Supervisor supervisor : listOfSupervisors) {
+            //do the vision check
+            double radius = supervisor.getAwareness();
+        }
         //maybe return it as a list(?)
     }
 
@@ -74,6 +76,20 @@ public class Game {
         //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
+        for (Supervisor supervisor : listOfSupervisors) {
+            //center of the circle
+            int x = supervisor.getRow();
+            int y = supervisor.getCol();
+            if (supervisor.getClass().getSimpleName().equals("Supervisor")) {
+                System.out.println(supervisor.getAwareness());
+                //discrete circle
+            }else{
+                //professor
+                //discrete circle
+                System.out.println(supervisor.getAwareness());
+            }
+            //double radius =
+        }
         return false;
     }
 

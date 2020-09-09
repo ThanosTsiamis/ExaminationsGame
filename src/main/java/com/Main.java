@@ -1,11 +1,8 @@
 package com;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
+import com.entitities.Column;
 import com.entitities.Professor;
 import com.entitities.Student;
 import com.entitities.Supervisor;
@@ -18,6 +15,8 @@ public class Main {
     public static Enum<CourseDifficulty> courseDifficulty = CourseDifficulty.EASY;
     public static Enum<ProfessorsAttitude> professorsAttitudeEnum = ProfessorsAttitude.RELAXED;
     public static ArrayList<Student> listOfMaliciousStudents = new ArrayList<>();
+    public static ArrayList<Supervisor> listOfSupervisors = new ArrayList<>();
+    public static ArrayList<Column> listOfColumns = new ArrayList<>();
 
     public static void main(String[] args) {
         //set the dimensions of the room
@@ -30,7 +29,7 @@ public class Main {
 
         //the supervisors come to the room
         int numberOfSupervisors = courseDifficulty.ordinal() + 1;
-        ArrayList<Supervisor> listOfSupervisors = new ArrayList<>();
+
         for (int counter = 0; counter < numberOfSupervisors; counter++) {
             Supervisor supervisor = new Supervisor();
             listOfSupervisors.add(supervisor);
@@ -40,6 +39,8 @@ public class Main {
         }
 
         Professor professor = new Professor();
+        listOfSupervisors.add(professor);
+
 
         Game game = new Game();
 
@@ -52,10 +53,8 @@ public class Main {
 
         //game ends here
         game.endOfGame();
-
         //store the results in a csv file with two tabs
         createResults();
-
         //after storage revert to original state
         game.revertResultsToOriginal();
         //empty list of Malicious Students
