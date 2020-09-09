@@ -76,19 +76,23 @@ public class Game {
         //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
+        //TODO add obstacles (columns) in the discrete circle - add some thoughts
         for (Supervisor supervisor : listOfSupervisors) {
             //center of the circle
-            int x = supervisor.getRow();
-            int y = supervisor.getCol();
+            int radius;
+            int x_centre = supervisor.getRow();
+            int y_centre = supervisor.getCol();
             if (supervisor.getClass().getSimpleName().equals("Supervisor")) {
-                System.out.println(supervisor.getAwareness());
-                //discrete circle
-            }else{
+                radius = (int) Math.rint(supervisor.getAwareness());
+                //shape the discrete circle
+            } else {
                 //professor
                 //discrete circle
-                System.out.println(supervisor.getAwareness());
+                radius = (int) Math.rint(supervisor.getAwareness());
+                //make the discrete circle
+                //hide the squares that are blocked by a column
+
             }
-            //double radius =
         }
         return false;
     }
