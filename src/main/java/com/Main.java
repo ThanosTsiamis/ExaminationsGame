@@ -78,17 +78,15 @@ public class Main {
             }
         }
         //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols
-        int row = 10;
-//        while (numberOfColumns != 0) {
-//            int col=1;
-//            room[row][col] = new Column(row,col);
-//            col +=5;
-//            room[row][col] = new Column(row,col);
-//            row+=15;
-//            //it creates index out of bounds
-//            //TODO find a different way to implement this. It produces index out of bounds
-//            numberOfColumns -= 1;
-//        }
+        int row = 9;
+        while (numberOfColumns != 0) {
+            int col=1;
+            room[row][col] = new Column(row,col);
+            col +=5;
+            room[row][col] = new Column(row,col);
+            row+=8;
+            numberOfColumns -= 1;
+        }
     }
 
     private static void createResults() {
