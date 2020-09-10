@@ -30,7 +30,7 @@ public class Game {
         cheatSuccessfulCheck();
         //Maybe playRound should return a boolean to end the game -->maliciousStudentCaught?
         roundNumber += 1;
-
+        sendHomeSupervisor();
     }
 
     public void endOfGame() {
@@ -106,7 +106,13 @@ public class Game {
             //game over good bye
             return false;
         }
-
+    }
+    private void sendHomeSupervisor(){
+        // if we are in the late game(i.e. last 100 ticks) and the course difficulty is hard or relatively hard and there are at least two supervisors
+        //then delete at least one from the list of supervisors (check if he is a supervisor and not the professor)
+        if (roundNumber>180){
+        //remove one supervisor
+        }
     }
 
 }
