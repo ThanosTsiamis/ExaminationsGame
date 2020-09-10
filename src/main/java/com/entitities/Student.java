@@ -25,7 +25,7 @@ public class Student {
     public Student(int row, int col) {
         this.row = row;
         this.col = col;
-        if (Math.random() < maliciousThreshold()) {
+        if (Math.random() > maliciousThreshold()) {
             malicious = true;
         } else {
             malicious = false;
