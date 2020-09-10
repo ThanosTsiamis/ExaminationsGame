@@ -17,7 +17,6 @@ public class Supervisor {
         return col;
     }
 
-    //TODO round awareness to an integer to represent the vision of the Supervisors
     public double getAwareness() {
         return awareness;
     }
@@ -28,11 +27,14 @@ public class Supervisor {
 
     public void move(int row, int col) {
         //move will also take into consideration pathTaken function to calculate next move
-        this.row = row;
-        this.col = col;
+        if (moveChanceGenerator()) {
+            assumePosition();
+            this.row = row;
+            this.col = col;
+        }
     }
 
-    public void pathTaken() {
+    public void pathFollowing() {
         // we could use a stack to pop elements and set the path
         //have them go up and down the walkways by keeping track of the col and going all the way up (or down)
     }
@@ -43,6 +45,14 @@ public class Supervisor {
         int highestBound = 14;
         int result = random.nextInt(highestBound - lowestBound) + lowestBound;
         move(0, result);
+    }
+
+    private boolean moveChanceGenerator() {
+        //TODO implement move chance generator
+        //it will calculate whether the supervisor will move this round (getRoundNumber) or stay put
+        //Supervisors tend to be more active during the start of the exams and then they are slow off the mark
+
+        return true;
     }
 
 }

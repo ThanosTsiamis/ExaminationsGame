@@ -10,6 +10,9 @@ public class Game {
     public static boolean maliciousStudentCaught;
     static int roundNumber;
 
+    public static int getRoundNumber() {
+        return roundNumber;
+    }
 //    public static boolean isMaliciousStudentCaught() {
 //        return maliciousStudentCaught;
 //    }
@@ -59,8 +62,6 @@ public class Game {
     }
 
     private void visionCheck() {
-        //fetch awareness from supervisors--DONE by traversing the list
-        //fetch awareness from professor--DONE by traversing the list
         //based on the position calculate the circle that a supervisor can catch a student
         //within bounds of course
         for (Supervisor supervisor : listOfSupervisors) {
@@ -79,21 +80,20 @@ public class Game {
         //TODO add obstacles (columns) in the discrete circle - add some thoughts
         for (Supervisor supervisor : listOfSupervisors) {
             //center of the circle
-            int radius;
             int x_centre = supervisor.getRow();
             int y_centre = supervisor.getCol();
-            if (supervisor.getClass().getSimpleName().equals("Supervisor")) {
-                radius = (int) Math.rint(supervisor.getAwareness());
-                //shape the discrete circle
-            } else {
-                //professor
-                //discrete circle
-                radius = (int) Math.rint(supervisor.getAwareness());
-                //make the discrete circle
-                //hide the squares that are blocked by a column
 
-            }
+            //discrete circle
+            int radius = (int) Math.rint(supervisor.getAwareness());
+            //make the discrete circle
+            //hide the squares that are blocked by a column
+            //if they are on the same row or column hide the next(left or right based on the position) cols or rows respectively
+            // until the end of awareness (i.e. radius)
+            //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
+
         }
+        //call a function that calculates which students are hidden
+
         return false;
     }
 
