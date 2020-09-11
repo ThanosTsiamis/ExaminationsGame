@@ -41,7 +41,6 @@ public class Main {
         Professor professor = new Professor();
         listOfSupervisors.add(professor);
 
-
         Game game = new Game();
 
         //Game starts
@@ -80,11 +79,11 @@ public class Main {
         //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols
         int row = 9;
         while (numberOfColumns != 0) {
-            int col=1;
-            room[row][col] = new Column(row,col);
-            col +=5;
-            room[row][col] = new Column(row,col);
-            row+=8;
+            int col = 1;
+            room[row][col] = new Column(row, col);
+            col += 5;
+            room[row][col] = new Column(row, col);
+            row += 8;
             numberOfColumns -= 1;
         }
     }
