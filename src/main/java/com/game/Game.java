@@ -1,8 +1,14 @@
 package com.game;
 
+import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
 import static com.Main.listOfSupervisors;
+import static com.Main.professorsAttitudeEnum;
 
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+
+import com.entitities.Column;
 import com.entitities.Student;
 import com.entitities.Supervisor;
 
@@ -77,18 +83,31 @@ public class Game {
         //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
-        //TODO add obstacles (columns) in the discrete circle - add some thoughts
+        //TODO add all of this in the function above visionCheck.This function should check only if the malicious students are caught.
         for (Supervisor supervisor : listOfSupervisors) {
-            //center of the circle
-            int x_centre = supervisor.getRow();
-            int y_centre = supervisor.getCol();
+            //position of the Supervisor (center of his vision circle)
+            int row_centre = supervisor.getRow();
+            int col_centre = supervisor.getCol();
 
-            //discrete circle
             int radius = (int) Math.rint(supervisor.getAwareness());
             //make the discrete circle
             //hide the squares that are blocked by a column
-            //if they are on the same row or column hide the next(left or right based on the position) cols or rows respectively
+            //if they are on the same row hide the next (left or right based on the position) cols
             // until the end of awareness (i.e. radius)
+            ArrayList<Point2D> blockedView ;
+            for (Column column : listOfColumns) {
+                //get Column coordinates
+                Point2D point = new Point2D.Double(column.getCol(), column.getRow());
+                //case where supervisor and column are on the same row
+                if (point.getX() == row_centre) {
+                    if (point.getY() < col_centre) {
+                        //hide the left squares
+                    } else {
+                    }
+                } else {
+                    //case where they are not on the same row
+                }
+            }
             //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
 
         }
@@ -100,18 +119,30 @@ public class Game {
     private boolean cheatSuccessfulCheck() {
         //if caughtCheck is false then this means that the student is not caught and return true
         if (!caughtCheck()) {
-            return true;
             //cheaters win (for this round)
+            return true;
         } else {
             //game over good bye
             return false;
         }
     }
-    private void sendHomeSupervisor(){
+
+    private void sendHomeSupervisor() {
         // if we are in the late game(i.e. last 100 ticks) and the course difficulty is hard or relatively hard and there are at least two supervisors
         //then delete at least one from the list of supervisors (check if he is a supervisor and not the professor)
-        if (roundNumber>180){
-        //remove one supervisor
+        //if the professor is not super tensed or paranoid
+        if (professorsAttitudeEnum.ordinal() <= 3) {
+            if (roundNumber > 180) {
+                //if the list of supervisors contains at least 3 elements then there are at least two supervisors
+                if (listOfSupervisors.size() >= 3) {
+                    //there is a 70% percent chance (TBD) where only two of the supervisors will stay
+                    if (Math.random() < 0.7) {
+                        int numberOfSupervisors = listOfSupervisors.size() - 1;
+                        //the 2/3 of them go home
+
+                    }
+                }
+            }
         }
     }
 
