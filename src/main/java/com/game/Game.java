@@ -94,7 +94,7 @@ public class Game {
             //hide the squares that are blocked by a column
             //if they are on the same row hide the next (left or right based on the position) cols
             // until the end of awareness (i.e. radius)
-            ArrayList<Point2D> blockedView ;
+            ArrayList<Point2D> blockedView;
             for (Column column : listOfColumns) {
                 //get Column coordinates
                 Point2D point = new Point2D.Double(column.getCol(), column.getRow());
