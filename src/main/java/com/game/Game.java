@@ -139,6 +139,9 @@ public class Game {
                     if (Math.random() < 0.7) {
                         int numberOfSupervisors = listOfSupervisors.size() - 1;
                         //the 2/3 of them go home
+                        for (int i = 0; i < (int) (numberOfSupervisors * 2 / 3); i++) {
+                           //TODO find a way to remove the items from the list
+                        }
 
                     }
                 }

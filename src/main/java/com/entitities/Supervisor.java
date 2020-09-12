@@ -28,7 +28,6 @@ public class Supervisor {
     public void move(int row, int col) {
         //move will also take into consideration pathTaken function to calculate next move
         if (moveChanceGenerator()) {
-            assumePosition();
             this.row = row;
             this.col = col;
         }

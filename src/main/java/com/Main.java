@@ -19,6 +19,7 @@ public class Main {
     public static ArrayList<Column> listOfColumns = new ArrayList<>();
 
     public static void main(String[] args) {
+        clearEverything();
         //set the dimensions of the room
         int numberOfRows = 50;
         int numberOfCols = 13;
@@ -101,5 +102,10 @@ public class Main {
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }
+    }
+    private static void clearEverything(){
+        listOfColumns.clear();
+        listOfMaliciousStudents.clear();
+        listOfSupervisors.clear();
     }
 }
