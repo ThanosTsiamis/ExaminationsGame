@@ -30,7 +30,7 @@ public class Game {
     public void playRound() {
         //the order of these functions below is very important as it dictates the way of playing the game
         moveSupervisors();
-        studentsCheat(roundNumber);
+        studentsCheat();
         visionCheck();
         caughtCheck();
         cheatSuccessfulCheck();
@@ -51,19 +51,14 @@ public class Game {
         }
     }
 
-    public void revertResultsToOriginal() {
-        //make sure to revert everything in the end in the original position for the program to run repeatedly
-        //malicious Students and roundNumber so far
-    }
-
     private void moveSupervisors() {
         //call Supervisor.move(xx,yy) where xx and yy will be the path they will take
         //The path implementation TBD
     }
 
-    private void studentsCheat(int roundNumber) {
+    private void studentsCheat() {
         for (Student student : listOfMaliciousStudents) {
-            student.cheat(roundNumber);
+            student.cheat();
         }
     }
 
@@ -86,8 +81,7 @@ public class Game {
         //TODO add all of this in the function above visionCheck.This function should check only if the malicious students are caught.
         for (Supervisor supervisor : listOfSupervisors) {
             //position of the Supervisor (center of his vision circle)
-            int row_centre = supervisor.getRow();
-            int col_centre = supervisor.getCol();
+            Point2D supervisorCoodinates = new Point2D.Double(supervisor.getRow(),supervisor.getCol());
 
             int radius = (int) Math.rint(supervisor.getAwareness());
             //make the discrete circle
@@ -97,11 +91,15 @@ public class Game {
             ArrayList<Point2D> blockedView;
             for (Column column : listOfColumns) {
                 //get Column coordinates
-                Point2D point = new Point2D.Double(column.getCol(), column.getRow());
+                Point2D columnCoordinates = new Point2D.Double(column.getCol(), column.getRow());
                 //case where supervisor and column are on the same row
-                if (point.getX() == row_centre) {
-                    if (point.getY() < col_centre) {
+                if (columnCoordinates.getX() == supervisorCoodinates.getX()) {
+                    if (columnCoordinates.getY() < supervisorCoodinates.getY()) {
                         //hide the left squares
+//                        double pointer = columnCoordinates.getY();
+//                        while (pointer>col_centre) {
+//
+//                        }
                     } else {
                     }
                 } else {
@@ -140,7 +138,7 @@ public class Game {
                         int numberOfSupervisors = listOfSupervisors.size() - 1;
                         //the 2/3 of them go home
                         for (int i = 0; i < (int) (numberOfSupervisors * 2 / 3); i++) {
-                           //TODO find a way to remove the items from the list
+                            //TODO find a way to remove the items from the list
                         }
 
                     }

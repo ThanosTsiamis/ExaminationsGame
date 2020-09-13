@@ -1,6 +1,7 @@
 package com.entitities;
 
 import com.Main;
+import com.game.Game;
 
 public class Student {
     final int row;
@@ -32,7 +33,7 @@ public class Student {
         }
     }
 
-    public void cheat(int roundNumber) {
+    public void cheat() {
         if (!hasCheatedSuccessfully) {
             if (isCheating() && roundsCheating > 4) {
                 setCheating(false);
@@ -40,7 +41,7 @@ public class Student {
             } else if (isCheating() && roundsCheating <= 4) {
                 roundsCheating += 1;
             }
-            if (isMalicious() && !isCheating() && cheatingChanceGenerator(roundNumber)) {
+            if (isMalicious() && !isCheating() && cheatingChanceGenerator()) {
                 roundsCheating += 1;
                 setCheating(true);
             }
@@ -61,13 +62,13 @@ public class Student {
         return Main.courseDifficulty.ordinal() * 0.235 + 0.01;
     }
 
-    private boolean cheatingChanceGenerator(int roundNumber) {
-        if (roundNumber <= 60) {
-            if (Math.random() < (0.01 / 12) * roundNumber) {
+    private boolean cheatingChanceGenerator() {
+        if (Game.getRoundNumber() <= 60) {
+            if (Math.random() < (0.01 / 12) * Game.getRoundNumber()) {
                 return true;
             }
-        } else if (roundNumber < 356) {
-            if (Math.random() < (0.55 / 295) * roundNumber) {
+        } else if (Game.getRoundNumber() < 356) {
+            if (Math.random() < (0.55 / 295) * Game.getRoundNumber()) {
                 return true;
             }
         } else {

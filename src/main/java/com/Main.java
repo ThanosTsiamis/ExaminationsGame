@@ -55,10 +55,6 @@ public class Main {
         game.endOfGame();
         //store the results in a csv file with two tabs
         createResults();
-        //after storage revert to original state
-        game.revertResultsToOriginal();
-        //empty list of Malicious Students
-        listOfMaliciousStudents.clear();
     }
 
     private static void populate(Object[][] room) {
