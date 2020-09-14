@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.entitities.Column;
 import com.entitities.Professor;
+import com.entitities.Room;
 import com.entitities.Student;
 import com.entitities.Supervisor;
 import com.entitities.Walkway;
@@ -23,10 +24,8 @@ public class Main {
         //set the dimensions of the room
         int numberOfRows = 50;
         int numberOfCols = 13;
-        Object[][] room = new Object[numberOfRows][numberOfCols];
+        Room room= new Room(numberOfRows,numberOfCols);
 
-        //populate the Room
-        populate(room);
 
         //the supervisors come to the room
         int numberOfSupervisors = courseDifficulty.ordinal() + 1;

@@ -34,8 +34,12 @@ public class Supervisor {
     }
 
     public void pathFollowing() {
-        // we could use a stack to pop elements and set the path
-        //have them go up and down the walkways by keeping track of the col and going all the way up (or down)
+        //will return up down left right direction
+
+        //will use move function once each turn
+        //fetch up down left right element from Room list and if type of Walkway add to the list
+        //choose one integer randomly from the list given the size of the list
+
     }
 
     public void assumePosition() {

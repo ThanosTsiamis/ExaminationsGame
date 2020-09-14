@@ -93,18 +93,18 @@ public class Game {
                 //get Column coordinates
                 Point2D columnCoordinates = new Point2D.Double(column.getCol(), column.getRow());
                 //case where supervisor and column are on the same row
-                if (columnCoordinates.getX() == supervisorCoodinates.getX()) {
-                    if (columnCoordinates.getY() < supervisorCoodinates.getY()) {
-                        //hide the left squares
-//                        double pointer = columnCoordinates.getY();
-//                        while (pointer>col_centre) {
-//
-//                        }
-                    } else {
-                    }
-                } else {
-                    //case where they are not on the same row
-                }
+//                if (columnCoordinates.getX() == supervisorCoodinates.getX()) {
+//                    if (columnCoordinates.getY() < supervisorCoodinates.getY()) {
+//                        //hide the left squares
+////                        double pointer = columnCoordinates.getY();
+////                        while (pointer>col_centre) {
+////
+////                        }
+//                    } else {
+//                    }
+//                } else {
+//                    //case where they are not on the same row
+//                }
             }
             //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
 
