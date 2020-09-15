@@ -3,7 +3,7 @@ package com.entitities;
 import static com.Main.listOfMaliciousStudents;
 
 public class Room {
-    Object[][] room;
+    static Object[][] room;
 
     public Room(int numberOfRows, int numberOfCols) {
         this.room = new Object[numberOfRows][numberOfCols];
@@ -38,7 +38,7 @@ public class Room {
         }
     }
 
-    public Object[][] getRoom() {
+    public static Object[][] getRoom() {
         return room;
     }
 }

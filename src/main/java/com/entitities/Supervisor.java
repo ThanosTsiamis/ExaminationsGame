@@ -1,6 +1,7 @@
 package com.entitities;
 
 import static com.Main.professorsAttitudeEnum;
+import static com.entitities.Room.getRoom;
 
 import java.util.Random;
 
@@ -35,6 +36,7 @@ public class Supervisor {
 
     public void pathFollowing() {
         //will return up down left right direction
+        Object[][] room = getRoom();
 
         //will use move function once each turn
         //fetch up down left right element from Room list and if type of Walkway add to the list
