@@ -10,7 +10,7 @@ public class Student {
     private boolean cheating;
     private int roundsCheating = 0;
     private boolean hasCheatedSuccessfully = false;
-    private final int roundsCheatingNeededToWin = 4;
+    private boolean caught = false;
 
     public boolean isMalicious() {
         return malicious;
@@ -24,18 +24,31 @@ public class Student {
         this.cheating = cheating;
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public boolean isCaught() {
+        return caught;
+    }
+
+    public void setCaught(boolean caught) {
+        this.caught = caught;
+    }
+
     public Student(int row, int col) {
         this.row = row;
         this.col = col;
-        if (Math.random() > maliciousThreshold()) {
-            malicious = true;
-        } else {
-            malicious = false;
-        }
+        malicious = Math.random() > maliciousThreshold();
     }
 
     public void cheat() {
         if (!hasCheatedSuccessfully) {
+            int roundsCheatingNeededToWin = 4;
             if (isCheating() && roundsCheating > roundsCheatingNeededToWin) {
                 setCheating(false);
                 hasCheatedSuccessfully = true;
@@ -65,17 +78,12 @@ public class Student {
 
     private boolean cheatingChanceGenerator() {
         if (Game.getRoundNumber() <= 60) {
-            if (Math.random() < (0.01 / 12) * Game.getRoundNumber()) {
-                return true;
-            }
+            return Math.random() < (0.01 / 12) * Game.getRoundNumber();
         } else if (Game.getRoundNumber() < 356) {
-            if (Math.random() < (0.55 / 295) * Game.getRoundNumber()) {
-                return true;
-            }
+            return Math.random() < (0.55 / 295) * Game.getRoundNumber();
         } else {
             return true;
         }
-        return false;
     }
 }
 

@@ -7,14 +7,20 @@ import static com.Main.professorsAttitudeEnum;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.entitities.Column;
 import com.entitities.Student;
 import com.entitities.Supervisor;
 
 public class Game {
-    public static boolean maliciousStudentCaught;
+    public static boolean maliciousStudentCaught = false;
     static int roundNumber;
+    static final int numberOfRounds = 360;
+
+    public static boolean isMaliciousStudentCaught() {
+        return maliciousStudentCaught;
+    }
 
     public static int getRoundNumber() {
         return roundNumber;
@@ -38,16 +44,20 @@ public class Game {
         sendHomeSupervisor();
     }
 
-    public void endOfGame() {
-        //export cheaters positions to a map <int-position xxyy,boolean-caught true/false>
+    public HashMap<Point2D, Boolean> endOfGame() {
+        HashMap<Point2D, Boolean> listToExport = new HashMap<>();
+        for (Student student : listOfMaliciousStudents) {
+            Point2D point2D = new Point2D.Double(student.getRow(), student.getCol());
+            listToExport.put(point2D, student.isCaught());
+        }
+        return listToExport;
     }
 
     public boolean isOn() {
-        return roundNumber < 360;
+        return roundNumber < numberOfRounds;
     }
 
     private void moveSupervisors() {
-        //call Supervisor.move(xx,yy) where xx and yy will be the path they will take
         for (Supervisor supervisor : listOfSupervisors) {
             supervisor.roundMove();
         }
@@ -59,35 +69,20 @@ public class Game {
         }
     }
 
-    //TODO implement vision check
     private void visionCheck() {
         //based on the position calculate the circle that a supervisor can catch a student
-        //within bounds of course
-        //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
         for (Supervisor supervisor : listOfSupervisors) {
-            //do the vision check by drawing Bresenham's circle
-            //next up find the columns and hide these squares and the
-            for (Column column : listOfColumns) {
-
-            }
-            //for every malicious Student that is cheating check if they are inside the circle
-            for (Student student : listOfMaliciousStudents) {
-
-            }
+            //STEP 1 : Add to a list the inside squares of the Bresenham's circle.
+            //STEP 2 : Iterate over the columns and add to a list the left or right elements or top left top rights elements up to awareness radius to a list
+            //STEP 3 : Remove said items from original list
+            //STEP 4 : Remove columns from a list
+            //The remaining elements are those that are visible to the supervisor
+            //If a student is inside those elements and he is cheating he is caught
         }
     }
-    //maybe return it as a list(?)
 
     private boolean caughtCheck() {
-        //based on visionCheck check if a student exists on this discrete circle who has isCheating == true
-        //this means that it takes the coordinates of the supervisor and calculates the discrete circle
-        //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
-        //if exists then return true
-        //if not return false
-
-        //call a function that calculates which students are hidden
-
-        return false;
+        return maliciousStudentCaught;
     }
 
     private boolean cheatSuccessfulCheck() {
@@ -105,17 +100,17 @@ public class Game {
         // if we are in the late game(i.e. last 100 ticks) and the course difficulty is hard or relatively hard and there are at least two supervisors
         //then delete at least one from the list of supervisors (check if he is a supervisor and not the professor)
         //if the professor is not super tensed or paranoid
-        if (professorsAttitudeEnum.ordinal() <= 3) {
-            if (roundNumber > 180) {
-                //if the list of supervisors contains at least 3 elements then there are at least two supervisors
+        if (professorsAttitudeEnum.ordinal() <= 2) {
+            if (roundNumber > numberOfRounds - 100) {
+                //if the list of supervisors contains at least 3 elements (i.e there are at least two supervisors)
                 if (listOfSupervisors.size() >= 3) {
                     //there is a 70% percent chance (TBD) where only two of the supervisors will stay
                     if (Math.random() < 0.7) {
                         int numberOfSupervisors = listOfSupervisors.size() - 1;
                         //the 2/3 of them go home
-                        for (int i = 0; i < (int) (numberOfSupervisors * 2 / 3); i++) {
-                            //TODO find a way to remove the items from the list
-                        }
+//                        for (int i = 0; i < (int) (numberOfSupervisors * 2 / 3); i++) {
+//                            //TODO find a way to remove the items from the list
+//                        }
 
                     }
                 }

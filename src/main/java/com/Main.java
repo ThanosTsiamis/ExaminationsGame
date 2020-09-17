@@ -1,7 +1,9 @@
 package com;
 
+import java.awt.geom.Point2D;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -50,17 +52,22 @@ public class Main {
             //play the game
             game.playRound();
             //if cheater caught then break;
+            if (Game.isMaliciousStudentCaught()) {
+                break;
+            }
         }
 
         //game ends here
-        game.endOfGame();
+        HashMap<Point2D, Boolean> mapOfStudentPositions = game.endOfGame();
+
         //store the results in a csv file with two tabs
         createResults();
     }
 
     private static void createResults() {
         //TODO check if it overwrites deleting the previous results - do it in a scratch file
-        try {String filename = "Results.xlsx";
+        try {
+            String filename = "Results.xlsx";
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet("Results");
             FileOutputStream fileOut = new FileOutputStream(filename);
