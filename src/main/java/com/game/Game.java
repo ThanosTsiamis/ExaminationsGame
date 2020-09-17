@@ -43,11 +43,7 @@ public class Game {
     }
 
     public boolean isOn() {
-        if (roundNumber < 360) {
-            return true;
-        } else {
-            return false;
-        }
+        return roundNumber < 360;
     }
 
     private void moveSupervisors() {
@@ -68,6 +64,17 @@ public class Game {
         //based on the position calculate the circle that a supervisor can catch a student
         //within bounds of course
         //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
+        for (Supervisor supervisor : listOfSupervisors) {
+            //do the vision check by drawing Bresenham's circle
+            //next up find the columns and hide these squares and the
+            for (Column column : listOfColumns) {
+
+            }
+            //for every malicious Student that is cheating check if they are inside the circle
+            for (Student student : listOfMaliciousStudents) {
+
+            }
+        }
     }
     //maybe return it as a list(?)
 
