@@ -7,7 +7,6 @@ import com.entitities.Professor;
 import com.entitities.Room;
 import com.entitities.Student;
 import com.entitities.Supervisor;
-import com.entitities.Walkway;
 import com.enums.CourseDifficulty;
 import com.enums.ProfessorsAttitude;
 import com.game.Game;
@@ -24,8 +23,7 @@ public class Main {
         //set the dimensions of the room
         int numberOfRows = 50;
         int numberOfCols = 13;
-        Room room= new Room(numberOfRows,numberOfCols);
-
+        Room room = new Room(numberOfRows, numberOfCols);
 
         //the supervisors come to the room
         int numberOfSupervisors = courseDifficulty.ordinal() + 1;
@@ -70,7 +68,8 @@ public class Main {
 //            System.out.println(e);
 //        }
     }
-    private static void clearEverything(){
+
+    private static void clearEverything() {
         listOfColumns.clear();
         listOfMaliciousStudents.clear();
         listOfSupervisors.clear();
