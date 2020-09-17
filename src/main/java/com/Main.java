@@ -1,6 +1,10 @@
 package com;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import com.entitities.Column;
 import com.entitities.Professor;
@@ -56,17 +60,17 @@ public class Main {
 
     private static void createResults() {
         //TODO check if it overwrites deleting the previous results - do it in a scratch file
-//        try {String filename = "Results.csv";
-//            HSSFWorkbook workbook = new HSSFWorkbook();
-//            HSSFSheet sheet = workbook.createSheet("Results");
-//            FileOutputStream fileOut = new FileOutputStream(filename);
-//            workbook.write(fileOut);
-//            fileOut.close();
-//            workbook.close();
-//            System.out.println("Your excel file has been generated!");
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+        try {String filename = "Results.xlsx";
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.createSheet("Results");
+            FileOutputStream fileOut = new FileOutputStream(filename);
+            workbook.write(fileOut);
+            fileOut.close();
+            workbook.close();
+            System.out.println("Your excel file has been generated!");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private static void clearEverything() {

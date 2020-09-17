@@ -13,4 +13,9 @@ public class Professor extends Supervisor {
     public double getAwareness() {
         return super.getAwareness() * 1.75;
     }
+
+    @Override
+    public void move(int row, int col) {
+        super.move(0, 5);
+    }
 }
