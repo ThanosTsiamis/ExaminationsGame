@@ -53,7 +53,9 @@ public class Game {
 
     private void moveSupervisors() {
         //call Supervisor.move(xx,yy) where xx and yy will be the path they will take
-        //The path implementation TBD
+        for (Supervisor supervisor:listOfSupervisors){
+            supervisor.roundMove();
+        }
     }
 
     private void studentsCheat() {

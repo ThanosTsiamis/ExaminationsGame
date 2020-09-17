@@ -2,6 +2,7 @@ package com.entitities;
 
 import static com.Main.professorsAttitudeEnum;
 import static com.entitities.Room.getRoom;
+import static com.entitities.Room.room;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -29,7 +30,6 @@ public class Supervisor {
     }
 
     public void move(int row, int col) {
-        //move will also take into consideration pathTaken function to calculate next move
         if (moveChanceGenerator()) {
             this.row = row;
             this.col = col;
@@ -50,7 +50,7 @@ public class Supervisor {
         move(0, result);
     }
 
-    private boolean moveChanceGenerator() {
+    private static boolean moveChanceGenerator() {
         //TODO implement move chance generator
         //it will calculate whether the supervisor will move this round (getRoundNumber) or stay put
         //Supervisors tend to be more active during the start of the exams and then they are slow off the mark
@@ -62,47 +62,35 @@ public class Supervisor {
         //will return up down left right direction
         //TODO when attractAttention is implemented a big if else is required here
         Object[][] room = getRoom();
-        ArrayList<Point2D> paths = new ArrayList<Point2D>();
-        try {
-            //up
-            if (room[row - 1][col].getClass().getCanonicalName().equals("Walkway")) {
-                //add up to list
-                paths.add(new Point2D.Double(row - 1, col));
-            }
-        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-            System.out.println(indexOutOfBoundsException);
+        ArrayList<Point2D> paths = new ArrayList<>();
+        if (!checkOutOfBounds(row - 1, col)) {
+            paths.add(new Point2D.Double(row - 1, col));
         }
-        try {
-            //down
-            if (room[row + 1][col].getClass().getCanonicalName().equals("Walkway")) {
-                //add down to list
-                paths.add(new Point2D.Double(row + 1, col));
-
-            }
-        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-            System.out.println(indexOutOfBoundsException);
+        if (!checkOutOfBounds(row + 1, col)) {
+            paths.add(new Point2D.Double(row + 1, col));
         }
-        try {
-            //left
-            if (room[row][col - 1].getClass().getCanonicalName().equals("Walkway")) {
-                //add left to list
-                paths.add(new Point2D.Double(row, col - 1));
-
-            }
-        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-            System.out.println(indexOutOfBoundsException);
+        if (!checkOutOfBounds(row, col - 1)) {
+            paths.add(new Point2D.Double(row, col - 1));
         }
-        try {
-            //right
-            if (room[row][col + 1].getClass().getCanonicalName().equals("Walkway")) {
-                //add right to list
-                paths.add(new Point2D.Double(row, col + 1));
-
-            }
-        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-            System.out.println(indexOutOfBoundsException);
+        if (!checkOutOfBounds(row, col + 1)) {
+            paths.add(new Point2D.Double(row, col + 1));
         }
         return paths.get(new Random().nextInt(paths.size()));
+    }
+
+    private boolean checkOutOfBounds(int row, int col) {
+        try {
+            if (room[row][col].getClass().getCanonicalName().equals("Walkway")) {
+                //add left to list
+                System.out.println("123123123");
+                return false;
+
+            }
+
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
     }
 
 }
