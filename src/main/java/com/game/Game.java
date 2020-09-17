@@ -34,7 +34,6 @@ public class Game {
         visionCheck();
         caughtCheck();
         cheatSuccessfulCheck();
-        //Maybe playRound should return a boolean to end the game -->maliciousStudentCaught?
         roundNumber += 1;
         sendHomeSupervisor();
     }
@@ -53,7 +52,7 @@ public class Game {
 
     private void moveSupervisors() {
         //call Supervisor.move(xx,yy) where xx and yy will be the path they will take
-        for (Supervisor supervisor:listOfSupervisors){
+        for (Supervisor supervisor : listOfSupervisors) {
             supervisor.roundMove();
         }
     }
@@ -64,15 +63,13 @@ public class Game {
         }
     }
 
+    //TODO implement vision check
     private void visionCheck() {
         //based on the position calculate the circle that a supervisor can catch a student
         //within bounds of course
-        for (Supervisor supervisor : listOfSupervisors) {
-            //do the vision check
-            double radius = supervisor.getAwareness();
-        }
-        //maybe return it as a list(?)
+        //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
     }
+    //maybe return it as a list(?)
 
     private boolean caughtCheck() {
         //based on visionCheck check if a student exists on this discrete circle who has isCheating == true
@@ -80,37 +77,7 @@ public class Game {
         //next, it checks whether a malicious student in the listOfMaliciousStudents that actively cheats is in the circle
         //if exists then return true
         //if not return false
-        //TODO add all of this in the function above visionCheck.This function should check only if the malicious students are caught.
-        for (Supervisor supervisor : listOfSupervisors) {
-            //position of the Supervisor (center of his vision circle)
-            Point2D supervisorCoodinates = new Point2D.Double(supervisor.getRow(),supervisor.getCol());
 
-            int radius = (int) Math.rint(supervisor.getAwareness());
-            //make the discrete circle
-            //hide the squares that are blocked by a column
-            //if they are on the same row hide the next (left or right based on the position) cols
-            // until the end of awareness (i.e. radius)
-            ArrayList<Point2D> blockedView;
-            for (Column column : listOfColumns) {
-                //get Column coordinates
-                Point2D columnCoordinates = new Point2D.Double(column.getCol(), column.getRow());
-                //case where supervisor and column are on the same row
-//                if (columnCoordinates.getX() == supervisorCoodinates.getX()) {
-//                    if (columnCoordinates.getY() < supervisorCoodinates.getY()) {
-//                        //hide the left squares
-////                        double pointer = columnCoordinates.getY();
-////                        while (pointer>col_centre) {
-////
-////                        }
-//                    } else {
-//                    }
-//                } else {
-//                    //case where they are not on the same row
-//                }
-            }
-            //if not hide the next rows and next cols (diagonal squares)until the end of awareness (i.e radius)
-
-        }
         //call a function that calculates which students are hidden
 
         return false;

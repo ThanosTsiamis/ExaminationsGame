@@ -10,6 +10,7 @@ public class Student {
     private boolean cheating;
     private int roundsCheating = 0;
     private boolean hasCheatedSuccessfully = false;
+    private final int roundsCheatingNeededToWin = 4;
 
     public boolean isMalicious() {
         return malicious;
@@ -35,10 +36,10 @@ public class Student {
 
     public void cheat() {
         if (!hasCheatedSuccessfully) {
-            if (isCheating() && roundsCheating > 4) {
+            if (isCheating() && roundsCheating > roundsCheatingNeededToWin) {
                 setCheating(false);
                 hasCheatedSuccessfully = true;
-            } else if (isCheating() && roundsCheating <= 4) {
+            } else if (isCheating() && roundsCheating <= roundsCheatingNeededToWin) {
                 roundsCheating += 1;
             }
             if (isMalicious() && !isCheating() && cheatingChanceGenerator()) {
