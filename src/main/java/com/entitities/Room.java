@@ -26,7 +26,7 @@ public class Room {
                 }
             }
         }
-        //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols
+        //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols starting from row 9
         int row = 9;
         while (numberOfColumns != 0) {
             int col = 1;

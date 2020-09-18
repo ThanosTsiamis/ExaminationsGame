@@ -1,12 +1,25 @@
 package com;
 
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.entitities.Column;
 import com.entitities.Professor;
@@ -61,20 +74,53 @@ public class Main {
         HashMap<Point2D, Boolean> mapOfStudentPositions = game.endOfGame();
 
         //store the results in a csv file with two tabs
-        createResults();
+        createResults(mapOfStudentPositions);
     }
 
-    private static void createResults() {
-        //TODO check if it overwrites deleting the previous results - do it in a scratch file
+    private static void createResults(HashMap mapOfStudents) {
+        //TODO check if it overwrites deleting the previous results
+        String excelFilePath = "Results.xlsx";
         try {
-            String filename = "Results.xlsx";
-            HSSFWorkbook workbook = new HSSFWorkbook();
-            HSSFSheet sheet = workbook.createSheet("Results");
-            FileOutputStream fileOut = new FileOutputStream(filename);
-            workbook.write(fileOut);
-            fileOut.close();
+            FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+            Workbook workbook = WorkbookFactory.create(inputStream);
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Object[][] bookData = {
+                    {"The Passionate Programmer", "Chad Fowler", 16},
+                    {"Software Craftmanship", "Pete McBreen", 26},
+                    {"The Art of Agile Development", "James Shore", 32},
+                    {"Continuous Delivery", "Jez Humble", 41},
+            };
+
+            int rowCount = sheet.getLastRowNum();
+
+            for (Object[] aBook : bookData) {
+                Row row = sheet.createRow(++rowCount);
+
+                int columnCount = 0;
+
+                Cell cell = row.createCell(columnCount);
+                cell.setCellValue(rowCount);
+
+                for (Object field : aBook) {
+                    cell = row.createCell(++columnCount);
+                    if (field instanceof String) {
+                        cell.setCellValue((String) field);
+                    } else if (field instanceof Integer) {
+                        cell.setCellValue((Integer) field);
+                    }
+                }
+
+            }
+
+            inputStream.close();
+
+            FileOutputStream outputStream = new FileOutputStream("Results.xlsx");
+            workbook.write(outputStream);
             workbook.close();
-            System.out.println("Your excel file has been generated!");
+            outputStream.close();
+
         } catch (Exception e) {
             System.out.println(e);
         }
