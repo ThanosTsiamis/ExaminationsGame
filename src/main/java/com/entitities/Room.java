@@ -1,5 +1,6 @@
 package com.entitities;
 
+import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
 
 public class Room {
@@ -30,9 +31,13 @@ public class Room {
         int row = 9;
         while (numberOfColumns != 0) {
             int col = 1;
-            room[row][col] = new Column(row, col);
+            Column column = new Column(row, col);
+            room[row][col] = column;
+            listOfColumns.add(column);
             col += 5;
-            room[row][col] = new Column(row, col);
+            Column column1 = new Column(row, col);
+            room[row][col] = column1;
+            listOfColumns.add(column1);
             row += 8;
             numberOfColumns -= 1;
         }
