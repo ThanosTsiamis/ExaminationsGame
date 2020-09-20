@@ -29,6 +29,7 @@ public class Room {
         }
         //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols starting from row 9
         int row = 9;
+        //TODO fix columns positions
         while (numberOfColumns != 0) {
             int col = 1;
             Column column = new Column(row, col);
@@ -38,6 +39,10 @@ public class Room {
             Column column1 = new Column(row, col);
             room[row][col] = column1;
             listOfColumns.add(column1);
+            col += 5;
+            Column column2 = new Column(row, col);
+            room[row][col] = column2;
+            listOfColumns.add(column2);
             row += 8;
             numberOfColumns -= 1;
         }

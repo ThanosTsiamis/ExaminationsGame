@@ -35,7 +35,7 @@ public class CreateExcel {
             Row header = sheet.createRow(i);
             for (int j = 0; j < 14; j++) {
                 Cell headerCell = header.createCell(j);
-                headerCell.setCellValue(i + " xx " + j);
+                headerCell.setCellValue(0);
             }
         }
 
@@ -43,13 +43,12 @@ public class CreateExcel {
         String path = currDir.getAbsolutePath();
         String fileLocation = path.substring(0, path.length() - 1) + "Results.xlsx";
 
-        FileOutputStream outputStream = null;
+        FileOutputStream outputStream;
 
         outputStream = new FileOutputStream(fileLocation);
 
         workbook.write(outputStream);
 
-        workbook.close();
 
     }
 }
