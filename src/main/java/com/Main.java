@@ -4,20 +4,16 @@ import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -73,56 +69,70 @@ public class Main {
         //game ends here
         HashMap<Point2D, Boolean> mapOfStudentPositions = game.endOfGame();
 
-        //store the results in a csv file with two tabs
-        createResults(mapOfStudentPositions);
+        //store the results in a csv file
+        createResults(listOfColumns);
+        //createResults(mapOfStudentPositions);
     }
 
-    private static void createResults(HashMap mapOfStudents) {
-        //TODO check if it overwrites deleting the previous results
-        String excelFilePath = "Results.xlsx";
+    private static void createResults(ArrayList<Column> listOfColumns) {
+        String filename = "Results.xlsx";
+
         try {
-            FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
-            Workbook workbook = WorkbookFactory.create(inputStream);
-
+            FileInputStream excelFile = new FileInputStream(new File(filename));
+            XSSFWorkbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
+            CellStyle headerStyle = workbook.createCellStyle();
 
-            Object[][] bookData = {
-                    {"The Passionate Programmer", "Chad Fowler", 16},
-                    {"Software Craftmanship", "Pete McBreen", 26},
-                    {"The Art of Agile Development", "James Shore", 32},
-                    {"Continuous Delivery", "Jez Humble", 41},
-            };
+            XSSFFont font = workbook.createFont();
+            font.setFontName("Arial");
+            font.setFontHeightInPoints((short) 16);
+            font.setBold(true);
+            headerStyle.setFont(font);
+            for (Column column : listOfColumns) {
+                sheet.getRow(column.getRow()).getCell(column.getCol()).setCellValue("Column");
+            }
+            File currDir = new File(".");
+            String path = currDir.getAbsolutePath();
+            String fileLocation = path.substring(0, path.length() - 1) + "Results.xlsx";
 
-            int rowCount = sheet.getLastRowNum();
+            FileOutputStream outputStream = null;
 
-            for (Object[] aBook : bookData) {
-                Row row = sheet.createRow(++rowCount);
+            outputStream = new FileOutputStream(fileLocation);
 
-                int columnCount = 0;
+            workbook.write(outputStream);
 
-                Cell cell = row.createCell(columnCount);
-                cell.setCellValue(rowCount);
+            workbook.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-                for (Object field : aBook) {
-                    cell = row.createCell(++columnCount);
-                    if (field instanceof String) {
-                        cell.setCellValue((String) field);
-                    } else if (field instanceof Integer) {
-                        cell.setCellValue((Integer) field);
+    private static void createResults(HashMap mapOfEntities) {
+        String filename = "Results.xlsx";
+
+        try {
+            FileInputStream excelFile = new FileInputStream(new File(filename));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> iterator = sheet.iterator();
+
+            while (iterator.hasNext()) {
+                Row currentRow = iterator.next();
+                Iterator<Cell> cellIterator = currentRow.iterator();
+                while (cellIterator.hasNext()) {
+                    Cell currentCell = cellIterator.next();
+                    //getCellTypeEnum shown as deprecated for version 3.15
+                    //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
+                    if (currentCell.getCellTypeEnum() == CellType.STRING) {
+                        System.out.print(currentCell.getStringCellValue() + "--");
+                    } else if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
+                        System.out.print(currentCell.getNumericCellValue() + "--");
                     }
                 }
-
+                System.out.println();
             }
-
-            inputStream.close();
-
-            FileOutputStream outputStream = new FileOutputStream("Results.xlsx");
-            workbook.write(outputStream);
-            workbook.close();
-            outputStream.close();
-
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
