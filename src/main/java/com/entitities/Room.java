@@ -31,11 +31,11 @@ public class Room {
         int row = 9;
         //TODO fix columns positions
         while (numberOfColumns != 0) {
-            int col = 1;
+            int col = 0;
             Column column = new Column(row, col);
             room[row][col] = column;
             listOfColumns.add(column);
-            col += 5;
+            col += 6;
             Column column1 = new Column(row, col);
             room[row][col] = column1;
             listOfColumns.add(column1);

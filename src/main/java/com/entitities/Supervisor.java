@@ -26,6 +26,7 @@ public class Supervisor {
     }
 
     public Supervisor() {
+        //TODO fix awareness threshold
         this.awareness = professorsAttitudeEnum.ordinal() * 0.75 + 1;
     }
 
@@ -54,7 +55,6 @@ public class Supervisor {
         //TODO implement move chance generator
         //it will calculate whether the supervisor will move this round (getRoundNumber) or stay put
         //Supervisors tend to be more active during the start of the exams and then they are slow off the mark
-
         return true;
     }
 
@@ -81,12 +81,14 @@ public class Supervisor {
     private boolean checkOutOfBounds(int row, int col) {
         try {
             if (room[row][col].getClass().getCanonicalName().equals("Walkway")) {
-                //add left to list
-                System.out.println("123123123");
                 return false;
-
             }
-
+            if (room[row][col].getClass().getCanonicalName().equals("Student")) {
+                return true;
+            }
+            if (room[row][col].getClass().getCanonicalName().equals("Column")) {
+                return true;
+            }
         } catch (Exception e) {
             return true;
         }

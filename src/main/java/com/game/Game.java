@@ -1,15 +1,12 @@
 package com.game;
 
-import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
 import static com.Main.listOfSupervisors;
 import static com.Main.professorsAttitudeEnum;
 
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.entitities.Column;
 import com.entitities.Student;
 import com.entitities.Supervisor;
 
@@ -25,9 +22,6 @@ public class Game {
     public static int getRoundNumber() {
         return roundNumber;
     }
-//    public static boolean isMaliciousStudentCaught() {
-//        return maliciousStudentCaught;
-//    }
 
     public Game() {
         roundNumber = 0;
@@ -87,13 +81,9 @@ public class Game {
 
     private boolean cheatSuccessfulCheck() {
         //if caughtCheck is false then this means that the student is not caught and return true
-        if (!caughtCheck()) {
-            //cheaters win (for this round)
-            return true;
-        } else {
-            //game over good bye
-            return false;
-        }
+        //cheaters win (for this round)
+        //game over good bye
+        return !caughtCheck();
     }
 
     private void sendHomeSupervisor() {
@@ -108,10 +98,14 @@ public class Game {
                     if (Math.random() < 0.7) {
                         int numberOfSupervisors = listOfSupervisors.size() - 1;
                         //the 2/3 of them go home
-//                        for (int i = 0; i < (int) (numberOfSupervisors * 2 / 3); i++) {
-//                            //TODO find a way to remove the items from the list
-//                        }
-
+                        int peopleToSendHome = (int) ((2.0 / 3.0) * numberOfSupervisors);
+                        while (peopleToSendHome > 0) {
+                            int rando = (int) (Math.random() * listOfSupervisors.size());
+                            if (listOfSupervisors.get(rando).getClass().getCanonicalName().equals("com.entitities.Supervisor")) {
+                                listOfSupervisors.remove(rando);
+                                peopleToSendHome -= 1;
+                            }
+                        }
                     }
                 }
             }
