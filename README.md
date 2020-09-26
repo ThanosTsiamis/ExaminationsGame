@@ -19,7 +19,7 @@ The game ends if a cheater is discovered.
 Among the students are some malicious Students who want to cheat their way out of the test.
 Those students  do not start to cheat right away but their cheating chance increases as time goes on.
 
-A typical examination lasts 180 minutes, and it will be divided in 360 rounds - 30" intervals (called ticks from now on).
+A typical examination lasts 180 minutes, and it will be divided in 360 rounds - this means 30" intervals (called ticks from now on).
 In each tick a student will either cheat or do nothing and if he successfully cheats for 4 ticks (i.e. 2 minutes) we consider that he passed the test 
 and will not cheat again.
 

@@ -1,12 +1,16 @@
 package com.game;
 
+import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
 import static com.Main.listOfSupervisors;
 import static com.Main.professorsAttitudeEnum;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.entitities.Column;
+import com.entitities.Room;
 import com.entitities.Student;
 import com.entitities.Supervisor;
 
@@ -64,14 +68,31 @@ public class Game {
     }
 
     private void visionCheck() {
+        Object[][] room = Room.getRoom();
         //based on the position calculate the circle that a supervisor can catch a student
         for (Supervisor supervisor : listOfSupervisors) {
-            //STEP 1 : Add to a list the inside squares of the Bresenham's circle.
+            ArrayList<Point2D> pointsInTheCircle = new ArrayList<>();
+            double radius = supervisor.getAwareness();
+            //Step 1
+            for (int row = 0; row < room.length; row++) {
+                for (int col = 0; col < room[row].length; col++) {
+                    int centreX = row - supervisor.getRow();
+                    int centreY = col - supervisor.getCol();
+                    if ((centreX * centreX) + (centreY * centreY) <= (radius * radius)) {
+                        Point2D point2D = new Point2D.Double(row, col);
+                        pointsInTheCircle.add(point2D);
+                    }
+                }
+            }
             //STEP 2 : Iterate over the columns and add to a list the left or right elements or top left top rights elements up to awareness radius to a list
+            for (Column column : listOfColumns) {
+
+            }
             //STEP 3 : Remove said items from original list
             //STEP 4 : Remove columns from a list
             //The remaining elements are those that are visible to the supervisor
             //If a student is inside those elements and he is cheating he is caught
+
         }
     }
 
