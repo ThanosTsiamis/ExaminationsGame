@@ -85,13 +85,23 @@ public class Game {
                 }
             }
             //STEP 2 : Iterate over the columns and add to a list the left or right elements or top left top rights elements up to awareness radius to a list
-            for (Column column : listOfColumns) {
-
-            }
+            ArrayList<Point2D> itemsToBeRemoved = new ArrayList<>();
+            
             //STEP 3 : Remove said items from original list
+
             //STEP 4 : Remove columns from a list
+            for (Column column : listOfColumns) {
+                Point2D columnCoordinates = new Point2D.Double(column.getRow(), column.getRow());
+                pointsInTheCircle.remove(columnCoordinates);
+            }
             //The remaining elements are those that are visible to the supervisor
             //If a student is inside those elements and he is cheating he is caught
+            for (Student student : listOfMaliciousStudents) {
+                Point2D studentPosition = new Point2D.Double(student.getRow(), student.getCol());
+                if (pointsInTheCircle.contains(studentPosition)) {
+                    student.setCaught(true);
+                }
+            }
 
         }
     }
