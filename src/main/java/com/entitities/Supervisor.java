@@ -45,8 +45,8 @@ public class Supervisor {
         Random random = new Random();
         int lowestBound = 0;
         int highestBound = 14;
-        int result = random.nextInt(highestBound - lowestBound) + lowestBound;
+        int column = random.nextInt(highestBound - lowestBound) + lowestBound;
         //TODO move contains a move chance generator . Need to always assume position
-        move(0, result);
+        move(0, column);
     }
 }
