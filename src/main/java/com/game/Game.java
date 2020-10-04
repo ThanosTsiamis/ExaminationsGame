@@ -73,7 +73,7 @@ public class Game {
         for (Supervisor supervisor : listOfSupervisors) {
             ArrayList<Point2D> pointsInTheCircle = new ArrayList<>();
             double radius = supervisor.getAwareness();
-            //Step 1
+            //Step 1: Add the circle of awareness inside a list
             for (int row = 0; row < room.length; row++) {
                 for (int col = 0; col < room[row].length; col++) {
                     int centreX = row - supervisor.getRow();
@@ -84,12 +84,12 @@ public class Game {
                     }
                 }
             }
-            //STEP 2 : Iterate over the columns and add to a list the left or right elements or top left top rights elements up to awareness radius to a list
+            //STEP 2 : Iterate over the columns and add to a (new) list the left or right elements or top left top rights elements up to awareness radius to a list
             ArrayList<Point2D> itemsToBeRemoved = new ArrayList<>();
-            
+
             //STEP 3 : Remove said items from original list
 
-            //STEP 4 : Remove columns from a list
+            //STEP 4 : Remove columns from original list
             for (Column column : listOfColumns) {
                 Point2D columnCoordinates = new Point2D.Double(column.getRow(), column.getRow());
                 pointsInTheCircle.remove(columnCoordinates);
