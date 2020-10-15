@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -48,7 +47,6 @@ public class CreateExcel {
         outputStream = new FileOutputStream(fileLocation);
 
         workbook.write(outputStream);
-
 
     }
 }

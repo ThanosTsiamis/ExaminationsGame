@@ -7,7 +7,7 @@ public class Room {
     static Object[][] room;
 
     public Room(int numberOfRows, int numberOfCols) {
-        this.room = new Object[numberOfRows][numberOfCols];
+        room = new Object[numberOfRows][numberOfCols];
         populate(room);
     }
 

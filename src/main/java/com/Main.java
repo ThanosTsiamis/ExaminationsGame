@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -65,7 +67,6 @@ public class Main {
 
         //game ends here
         HashMap<Point2D, Boolean> mapOfStudentPositions = game.endOfGame();
-
         //store the results in a csv file
         createResults(listOfColumns);
         createResults(mapOfStudentPositions);
@@ -102,6 +103,7 @@ public class Main {
         }
     }
 
+    //TODO SKANE TA COLUMNS - prepei na exei sxesi me to +1 twn rows
     private static void createResults(HashMap<Point2D, Boolean> mapOfEntities) {
         String filename = "Results.xlsx";
         try {
@@ -112,8 +114,14 @@ public class Main {
             for (Map.Entry<Point2D, Boolean> entry : mapOfEntities.entrySet()) {
                 int row = (int) entry.getKey().getX();
                 int col = (int) entry.getKey().getY();
-                if (entry.getValue()) {
-                    double value = sheet.getRow(row).getCell(col).getNumericCellValue();
+                if (!entry.getValue()) {
+                    CellType cellType = sheet.getRow(row).getCell(col).getCellTypeEnum();
+                    double value;
+                    if (cellType.equals(CellType.NUMERIC)) {
+                        value = sheet.getRow(row).getCell(col).getNumericCellValue();
+                    } else {
+                        value = Double.parseDouble(sheet.getRow(row).getCell(col).getStringCellValue());
+                    }
                     sheet.getRow(row).getCell(col).setCellValue(value + 1);
                 }
             }
