@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,11 +15,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.entitities.Column;
-import com.entitities.Professor;
-import com.entitities.Room;
-import com.entitities.Student;
-import com.entitities.Supervisor;
+import com.entities.Column;
+import com.entities.Professor;
+import com.entities.Room;
+import com.entities.Student;
+import com.entities.Supervisor;
 import com.enums.CourseDifficulty;
 import com.enums.ProfessorsAttitude;
 import com.game.Game;

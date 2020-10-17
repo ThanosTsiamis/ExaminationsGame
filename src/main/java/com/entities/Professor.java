@@ -1,4 +1,4 @@
-package com.entitities;
+package com.entities;
 
 public class Professor extends Supervisor {
     int row;

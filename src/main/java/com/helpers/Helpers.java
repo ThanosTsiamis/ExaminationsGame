@@ -1,6 +1,6 @@
 package com.helpers;
 
-import static com.entitities.Room.getRoom;
+import static com.entities.Room.getRoom;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -14,10 +14,16 @@ public class Helpers {
         return true;
     }
 
+    public static void computeFieldOfVision(){
+        //TODO check whether Recursive Shadowcasting by Bergstrom can be implemented here
+
+
+
+    }
+
     public static Point2D pathChooser(int row, int col) {
         //will return up down left right direction
         //TODO when attractAttention is implemented a big if else is required here
-        Object[][] room = getRoom();
         ArrayList<Point2D> paths = new ArrayList<>();
         if (!checkOutOfBounds(row - 1, col)) {
             paths.add(new Point2D.Double(row - 1, col));

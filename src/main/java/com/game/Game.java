@@ -9,10 +9,10 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.entitities.Column;
-import com.entitities.Room;
-import com.entitities.Student;
-import com.entitities.Supervisor;
+import com.entities.Column;
+import com.entities.Room;
+import com.entities.Student;
+import com.entities.Supervisor;
 
 public class Game {
     public static boolean maliciousStudentCaught = false;
@@ -131,9 +131,9 @@ public class Game {
                         //the 2/3 of them go home
                         int peopleToSendHome = (int) ((2.0 / 3.0) * numberOfSupervisors);
                         while (peopleToSendHome > 0) {
-                            int rando = (int) (Math.random() * listOfSupervisors.size());
-                            if (listOfSupervisors.get(rando).getClass().getCanonicalName().equals("com.entitities.Supervisor")) {
-                                listOfSupervisors.remove(rando);
+                            int random = (int) (Math.random() * listOfSupervisors.size());
+                            if (listOfSupervisors.get(random).getClass().getCanonicalName().equals("com.entities.Supervisor")) {
+                                listOfSupervisors.remove(random);
                                 peopleToSendHome -= 1;
                             }
                         }
