@@ -1,4 +1,4 @@
-package com.entitities;
+package com.entities;
 
 import static com.Main.professorsAttitudeEnum;
 import static com.helpers.Helpers.moveChanceGenerator;

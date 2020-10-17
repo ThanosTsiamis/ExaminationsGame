@@ -1,4 +1,4 @@
-package com.entitities;
+package com.entities;
 
 import com.Main;
 import com.game.Game;

@@ -1,4 +1,4 @@
-package com.entitities;
+package com.entities;
 
 import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
