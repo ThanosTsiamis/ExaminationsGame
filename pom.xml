@@ -28,6 +28,11 @@
       <version>RELEASE</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>com.squidpony</groupId>
+      <artifactId>squidlib-util</artifactId>
+      <version>3.0.2</version>
+    </dependency>
 
 
   </dependencies>
