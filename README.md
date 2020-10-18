@@ -31,5 +31,7 @@ We will run each game approximately n times (n TBD) to see whether some statisti
 ### Contribute
 Pull requests and forks are more than welcome for this one-person team!
 If you have any question feel free to open an issue on Github and I'll get back as soon as possible. 
+
 Cheers!
+
 Thanos
