@@ -14,13 +14,6 @@ public class Helpers {
         return true;
     }
 
-    public static void computeFieldOfVision(){
-        //TODO check whether Recursive Shadowcasting by Bergstrom can be implemented here
-
-
-
-    }
-
     public static Point2D pathChooser(int row, int col) {
         //will return up down left right direction
         //TODO when attractAttention is implemented a big if else is required here
