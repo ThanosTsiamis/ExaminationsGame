@@ -1,11 +1,11 @@
 # ExaminationsGame
 A short and simple Monte Carlo simulation.
-##Motivation
+## Motivation
 Several accusations have been made that students will try to cheat in the exams if given the chance.
 
 In this little project we investigate whether these accusations hold by trying to simulate the events.
 
-##Rules
+## Rules
 
 A matrix K x L represents the examination room divided in K rows and L columns in such way
 that one matrix cell will either be occupied by a Student or a Walkway.
@@ -27,3 +27,9 @@ In the end the algorithm keeps a record of the cheaters' position and marks them
 
 
 We will run each game approximately n times (n TBD) to see whether some statistically significant results apply.
+
+### Contribute
+Pull requests and forks are more than welcome for this one-person team!
+If you have any question feel free to open an issue on Github and I'll get back as soon as possible. 
+Cheers!
+Thanos
