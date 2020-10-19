@@ -23,12 +23,6 @@
       <version>3.15</version>
     </dependency>
     <dependency>
-      <groupId>org.jetbrains</groupId>
-      <artifactId>annotations</artifactId>
-      <version>RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>com.squidpony</groupId>
       <artifactId>squidlib-util</artifactId>
       <version>3.0.2</version>
@@ -46,8 +40,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.0</version>
+        <version>3.8.0</version>
         <configuration>
+          <release>11</release>
           <source>11</source>
           <target>11</target>
         </configuration>
