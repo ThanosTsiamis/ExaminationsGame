@@ -16,6 +16,7 @@ public class Room {
         for (int row = 0; row < room.length; row++) {
             for (int col = 0; col < room[row].length; col++) {
                 //populate with data
+                //TODO check if the positions are correct
                 if (col % 2 == 0 && row != 0) {
                     Student student = new Student(row, col);
                     room[row][col] = student;
