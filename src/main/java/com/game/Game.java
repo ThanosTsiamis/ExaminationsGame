@@ -86,7 +86,14 @@ public class Game {
             }
             //STEP 2 : Iterate over the columns and add to a (new) list the left or right elements or top left top rights elements up to awareness radius to a list
             ArrayList<Point2D> itemsToBeRemoved = new ArrayList<>();
+            float[][] list = supervisor.calculateFOV();
+            for (int i = 0; i < list.length; i++) {
+                for (int k = 0; k < list[i].length; k++) {
+                    if (list[i][k] < 0.65) { //this shows the threshold where how much of a student is hidden from a column
 
+                    }
+                }
+            }
             //STEP 3 : Remove said items from original list
 
             //STEP 4 : Remove columns from original list

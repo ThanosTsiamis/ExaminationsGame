@@ -1,7 +1,5 @@
 package com.entities;
 
-import static com.Main.courseDifficulty;
-import static com.Main.listOfSupervisors;
 import static com.Main.professorsAttitudeEnum;
 import static com.entities.Room.getRoom;
 import static com.helpers.Helpers.moveChanceGenerator;
@@ -9,8 +7,6 @@ import static com.helpers.Helpers.pathChooser;
 
 import java.awt.geom.Point2D;
 import java.util.Random;
-
-import com.game.Game;
 
 import squidpony.squidgrid.Direction;
 import squidpony.squidgrid.Radius;
