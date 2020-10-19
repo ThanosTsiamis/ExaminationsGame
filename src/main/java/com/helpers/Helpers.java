@@ -36,13 +36,13 @@ public class Helpers {
     private static boolean checkOutOfBounds(int row, int col) {
         try {
             Object[][] room = getRoom();
-            if (room[row][col].getClass().getCanonicalName().equals("Walkway")) {
+            if (room[row][col].getClass().getCanonicalName().equals("com.entities.Walkway")) {
                 return false;
             }
-            if (room[row][col].getClass().getCanonicalName().equals("Student")) {
+            if (room[row][col].getClass().getCanonicalName().equals("com.entities.Student")) {
                 return true;
             }
-            if (room[row][col].getClass().getCanonicalName().equals("Column")) {
+            if (room[row][col].getClass().getCanonicalName().equals("com.entities.Column")) {
                 return true;
             }
         } catch (Exception e) {
