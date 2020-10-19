@@ -1,5 +1,7 @@
 package com.entities;
 
+import static com.Main.courseDifficulty;
+import static com.Main.listOfSupervisors;
 import static com.Main.professorsAttitudeEnum;
 import static com.entities.Room.getRoom;
 import static com.helpers.Helpers.moveChanceGenerator;
@@ -8,6 +10,8 @@ import static com.helpers.Helpers.pathChooser;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+import com.game.Game;
+
 import squidpony.squidgrid.Direction;
 import squidpony.squidgrid.Radius;
 
@@ -15,6 +19,7 @@ public class Supervisor {
     int row;
     int col;
     double awareness;
+    float[][] visibilityMatrix = new float[getRoom().length][getRoom()[0].length];
 
     public int getRow() {
         return row;
@@ -55,18 +60,13 @@ public class Supervisor {
     }
 
     //TODO resistanceMap would be a copy of the room() where columns would have a 1 in their position
-    public float[][] calculateFOV(float[][] resistanceMap) {
-        int width = getRoom().length;
-        int height = getRoom()[0].length;
-        float[][] lightMap = new float[width][height];
-
-        //lightMap[startx][starty] = force;//light the starting cell
+    public float[][] calculateFOV() {
+        visibilityMatrix[getRow()][getCol()] = 1;//light the starting cell
         for (Direction d : Direction.DIAGONALS) {
             castLight(1, 1.0f, 0.0f, 0, d.deltaX, d.deltaY, 0);
             castLight(1, 1.0f, 0.0f, d.deltaX, 0, 0, d.deltaY);
         }
-
-        return lightMap;
+        return visibilityMatrix;
     }
 
     private void castLight(int row, float start, float end, int xx, int xy, int yx, int yy) {
@@ -93,19 +93,18 @@ public class Supervisor {
                 Radius radiusStrategy = Radius.CIRCLE;
                 if (radiusStrategy.radius(deltaX, deltaY) <= getAwareness()) {
                     float bright = (float) (1 - (radiusStrategy.radius(deltaX, deltaY) / getAwareness()));
-                    lightMap[currentX][currentY] = bright;
+                    visibilityMatrix[currentX][currentY] = bright;
                 }
 
                 if (blocked) { //previous cell was a blocking one
-                    if (resistanceMap[currentX][currentY] >= 1) {//hit a wall
+                    if (getRoom()[currentX][currentY].getClass().getCanonicalName().equals("com.entities.Column")) {//hit a wall
                         newStart = rightSlope;
-                        continue;
                     } else {
                         blocked = false;
                         start = newStart;
                     }
                 } else {
-                    if (resistanceMap[currentX][currentY] >= 1 && distance < getAwareness()) {//hit a wall within sight line
+                    if (getRoom()[currentX][currentY].getClass().getCanonicalName().equals("com.entities.Column") && distance < getAwareness()) {//hit a wall within sight line
                         blocked = true;
                         castLight(distance + 1, start, leftSlope, xx, xy, yx, yy);
                         newStart = rightSlope;
@@ -113,9 +112,5 @@ public class Supervisor {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }
