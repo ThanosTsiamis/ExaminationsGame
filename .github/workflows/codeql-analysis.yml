@@ -29,13 +29,13 @@ jobs:
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Setup Java JDK
         uses: actions/setup-java@v1.3.0
-#        with:
-#            java-version: 11
+        with:
+          java-version: 11
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
