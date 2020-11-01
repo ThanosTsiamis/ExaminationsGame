@@ -16,7 +16,6 @@ public class Helpers {
 
     public static Point2D pathChooser(int row, int col) {
         //will return up down left right direction
-        //TODO when attractAttention is implemented a big if else is required here
         ArrayList<Point2D> paths = new ArrayList<>();
         if (!checkOutOfBounds(row - 1, col)) {
             paths.add(new Point2D.Double(row - 1, col));

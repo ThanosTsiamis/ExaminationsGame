@@ -62,16 +62,6 @@ public class Student {
         }
     }
 
-    public void attractAttention() {
-        if (!malicious) {
-            //TODO change it according to the course's difficulty.This means more difficult courses attract more attention.
-            if (Math.random() < 0.1) {
-                //set the path of a supervisor to a student
-                //use dfs algorithm
-            }
-        }
-    }
-
     private double maliciousThreshold() {
         return Main.courseDifficulty.ordinal() * 0.235 + 0.01;
     }
