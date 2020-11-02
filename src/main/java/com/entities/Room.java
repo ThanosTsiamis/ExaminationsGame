@@ -10,7 +10,7 @@ public class Room {
         room = new Object[numberOfRows][numberOfCols];
         populate(room);
     }
-//TODO the positions are not correct ( which in turn creates a problem in MonterCarloSimulation class). Need to change it in order to check it if the position is already taken.
+
     private static void populate(Object[][] room) {
         int numberOfColumns = 6;
         //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols starting from row 9
@@ -35,14 +35,16 @@ public class Room {
         for (int rows = 0; rows < room.length; rows++) {
             for (int col = 0; col < room[rows].length; col++) {
                 //populate with data
-                if (col % 2 == 0 && rows != 0) {
-                    Student student = new Student(rows, col);
-                    room[rows][col] = student;
-                    if (student.isMalicious()) {
-                        listOfMaliciousStudents.add(student);
+                if (room[rows][col] == null) { //if it's not a column
+                    if (col % 2 == 0 && rows != 0) { //if it's not on the first row and every two columns
+                        Student student = new Student(rows, col);
+                        room[rows][col] = student; // populate with a student
+                        if (student.isMalicious()) {
+                            listOfMaliciousStudents.add(student);
+                        }
+                    } else {
+                        room[rows][col] = new Walkway(rows, col); //else put a walkway
                     }
-                } else {
-                    room[rows][col] = new Walkway(rows, col);
                 }
             }
         }

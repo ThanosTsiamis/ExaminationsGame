@@ -30,7 +30,7 @@ public class CreateExcel {
         font.setFontHeightInPoints((short) 16);
         font.setBold(true);
         headerStyle.setFont(font);
-        for (int i = 0; i < 51; i++) {
+        for (int i = 0; i < 50; i++) {
             Row header = sheet.createRow(i);
             for (int j = 0; j < 14; j++) {
                 Cell headerCell = header.createCell(j);
