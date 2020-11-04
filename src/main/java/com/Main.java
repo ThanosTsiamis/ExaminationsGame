@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -74,6 +75,7 @@ public class Main {
     private static void createResults(ArrayList<Column> listOfColumns) {
         String filename = "Results.xlsx";
         try {
+            ZipSecureFile.setMinInflateRatio(0);
             FileInputStream excelFile = new FileInputStream(new File(filename));
             XSSFWorkbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
@@ -102,10 +104,10 @@ public class Main {
         }
     }
 
-    //TODO SKANE TA COLUMNS - prepei na exei sxesi me to +1 twn rows
     private static void createResults(HashMap<Point2D, Boolean> mapOfEntities) {
         String filename = "Results.xlsx";
         try {
+            ZipSecureFile.setMinInflateRatio(0);
             FileInputStream excelFile = new FileInputStream(new File(filename));
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
