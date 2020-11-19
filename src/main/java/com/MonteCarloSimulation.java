@@ -9,9 +9,9 @@ public class MonteCarloSimulation {
         if (!file.exists()) {
             CreateExcel.main(args);
         }
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 10000; i++) {
             Main.main(args);
+           // System.out.println(i); //progress bar purposes
         }
-
     }
 }
