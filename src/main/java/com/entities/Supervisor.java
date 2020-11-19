@@ -55,7 +55,6 @@ public class Supervisor {
         move(0, column);
     }
 
-    //TODO resistanceMap would be a copy of the room() where columns would have a 1 in their position
     public float[][] calculateFOV() {
         visibilityMatrix[getRow()][getCol()] = 1;//light the starting cell
         for (Direction d : Direction.DIAGONALS) {
