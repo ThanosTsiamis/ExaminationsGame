@@ -11,7 +11,7 @@ public class MonteCarloSimulation {
         }
         for (int i = 0; i < 500; i++) {
             Main.main(args);
-            System.out.println(i); //progress bar purposes
+            System.out.println(i); //progress bar purposes only
         }
     }
 }
