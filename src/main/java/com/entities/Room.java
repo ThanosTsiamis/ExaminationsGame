@@ -2,6 +2,7 @@ package com.entities;
 
 import static com.Main.listOfColumns;
 import static com.Main.listOfMaliciousStudents;
+import static com.Main.numberOfColumns;
 
 public class Room {
     static Object[][] room;
@@ -12,10 +13,7 @@ public class Room {
     }
 
     private static void populate(Object[][] room) {
-        int numberOfColumns = 6;
-        //we put #numberOfColumns columns in the room, one every 15 rows and every 4 cols starting from row 9
         int row = 9;
-        //TODO fix columns positions
         while (numberOfColumns != 0) {
             int col = 0;
             Column column = new Column(row, col);

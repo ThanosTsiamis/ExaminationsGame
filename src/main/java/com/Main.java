@@ -31,6 +31,7 @@ public class Main {
     public static ArrayList<Student> listOfMaliciousStudents = new ArrayList<>();
     public static ArrayList<Supervisor> listOfSupervisors = new ArrayList<>();
     public static ArrayList<Column> listOfColumns = new ArrayList<>();
+    public static int numberOfColumns = 6;
 
     public static void main(String[] args) {
         clearEverything();
