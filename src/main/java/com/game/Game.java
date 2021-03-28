@@ -36,10 +36,10 @@ public class Game {
         moveSupervisors();
         studentsCheat();
         visionCheck();
-        caughtCheck();
-        cheatSuccessfulCheck();
-        roundNumber += 1;
-        sendHomeSupervisor();
+        if (!areCheatingStudentsCaught()) {
+            roundNumber += 1;
+            sendHomeSupervisor();
+        }
     }
 
     public HashMap<Point2D, Boolean> endOfGame() {
@@ -113,15 +113,17 @@ public class Game {
         }
     }
 
-    private boolean caughtCheck() {
-        return maliciousStudentCaught;
-    }
-
-    private boolean cheatSuccessfulCheck() {
+    private boolean areCheatingStudentsCaught() {
         //if caughtCheck is false then this means that the student is not caught and return true
         //cheaters win (for this round)
         //game over good bye
-        return !caughtCheck();
+        for (Student student : listOfMaliciousStudents) {
+            if (student.isCaught()) {
+                maliciousStudentCaught = true;
+                break;
+            }
+        }
+        return maliciousStudentCaught;
     }
 
     private void sendHomeSupervisor() {
