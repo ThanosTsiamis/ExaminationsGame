@@ -9,11 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.entities.Column;
@@ -34,7 +32,7 @@ public class Main {
     public static int numberOfColumns = 6;
 
     public static void main(String[] args) {
-        clearEverything();
+        revertToOriginalState();
         //set the dimensions of the room
         int numberOfRows = 50;
         int numberOfCols = 13;
@@ -69,40 +67,7 @@ public class Main {
         //game ends here
         HashMap<Point2D, Boolean> mapOfStudentPositions = game.endOfGame();
         //store the results in a csv file
-        createResults(listOfColumns);
         createResults(mapOfStudentPositions);
-    }
-
-    private static void createResults(ArrayList<Column> listOfColumns) {
-        String filename = "Results.xlsx";
-        try {
-            ZipSecureFile.setMinInflateRatio(0);
-            FileInputStream excelFile = new FileInputStream(new File(filename));
-            XSSFWorkbook workbook = new XSSFWorkbook(excelFile);
-            Sheet sheet = workbook.getSheetAt(0);
-
-            CellStyle headerStyle = workbook.createCellStyle();
-            XSSFFont font = workbook.createFont();
-            font.setFontName("Arial");
-            font.setFontHeightInPoints((short) 16);
-            font.setBold(true);
-            headerStyle.setFont(font);
-
-            for (Column column : listOfColumns) {
-                sheet.getRow(column.getRow()).getCell(column.getCol()).setCellValue("Column");
-            }
-
-            File currDir = new File(".");
-            String path = currDir.getAbsolutePath();
-            String fileLocation = path.substring(0, path.length() - 1) + "Results.xlsx";
-
-            FileOutputStream outputStream;
-            outputStream = new FileOutputStream(fileLocation);
-            workbook.write(outputStream);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private static void createResults(HashMap<Point2D, Boolean> mapOfEntities) {
@@ -116,7 +81,7 @@ public class Main {
             for (Map.Entry<Point2D, Boolean> entry : mapOfEntities.entrySet()) {
                 int row = (int) entry.getKey().getX();
                 int col = (int) entry.getKey().getY();
-                if (!entry.getValue()) {
+                if (!entry.getValue()) {//if the student hasn't been caught
                     CellType cellType = sheet.getRow(row).getCell(col).getCellTypeEnum();
                     double value;
                     if (cellType.equals(CellType.NUMERIC)) {
@@ -141,9 +106,10 @@ public class Main {
         }
     }
 
-    private static void clearEverything() {
+    private static void revertToOriginalState() {
         listOfColumns.clear();
         listOfMaliciousStudents.clear();
         listOfSupervisors.clear();
+        numberOfColumns = 6;
     }
 }

@@ -1,5 +1,8 @@
 package com;
 
+import static com.CreateExcel.insertColumnsIntoExcel;
+import static com.Main.listOfColumns;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -9,6 +12,8 @@ public class MonteCarloSimulation {
         if (!file.exists()) {
             CreateExcel.main(args);
         }
+        Main.main(args);
+        insertColumnsIntoExcel(listOfColumns);
         for (int i = 0; i < 500; i++) {
             Main.main(args);
             System.out.println(i); //progress bar purposes only
